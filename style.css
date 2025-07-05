@@ -1,0 +1,106 @@
+/* 动态渐变背景 */
+body {
+    background: linear-gradient(45deg, 
+        #ff6b6b, #4ecdc4, #45b7d1, #96f2d7);
+    background-size: 400% 400%;
+    animation: gradientFlow 15s ease infinite;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+    perspective: 1000px;
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+}
+
+/* 毛玻璃时间容器 */
+.time-glass {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px) saturate(180%);
+    border-radius: 20px;
+    padding: 2rem 3rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    transform: rotateX(5deg) rotateY(-5deg);
+    transition: transform 0.3s;
+}
+
+.time-glass:hover {
+    transform: rotateX(0) rotateY(0);
+}
+
+#date {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#time {
+    font-size: 4rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: white;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    margin: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+#weekday {
+    font-size: 2rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* 动态装饰元素 */
+.deco-circle {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #FF6B6B 0%, #FFE66D 100%);
+    opacity: 0.2;
+    filter: blur(60px);
+    animation: float 12s infinite alternate ease-in-out;
+    z-index: 1;
+}
+
+@keyframes float {
+    0% { 
+        transform: translate(-50%, -30%) scale(0.9); 
+    }
+    100% { 
+        transform: translate(50%, 30%) scale(1.1); 
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .time-glass { 
+        padding: 1.5rem; 
+    }
+    #time { 
+        font-size: 3rem; 
+    }
+    #date {
+        font-size: 1.4rem;
+    }
+    #weekday {
+        font-size: 1.6rem;
+    }
+}
