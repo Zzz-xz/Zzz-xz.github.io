@@ -1,3 +1,24 @@
+// ================= 新添加的页面加载动画控制逻辑 =================
+function initPageElements() {
+  // 当粒子渲染达到平稳状态后显示内容元素
+  const heroContainer = document.querySelector('.hero-container');
+  const footer = document.querySelector('.footer');
+
+  // 设置每个元素的动画延迟时间，实现依次加载效果
+  setTimeout(() => {
+    heroContainer.style.animationDelay = '0.2s';
+    heroContainer.style.opacity = 1;
+  }, 100);
+
+  setTimeout(() => {
+    footer.style.animationDelay = '0.4s';
+    footer.style.opacity = 1;
+  }, 300);
+
+  // 更新并显示当前时间
+  updateTime();
+}
+
 // ================= 粒子系统核心 =================
 class Particle {
     constructor(x, y, id) {
