@@ -1,0 +1,35 @@
+/* 水波纹容器样式 */
+#ripple-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../assets/images/background.jpg'); /* 本地背景图路径 */
+    background-position: center;
+    background-size: cover;
+    background-blend-mode: overlay;
+    z-index: 0;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
+    opacity: 0.85;
+}
+
+/* 底部渐变层（增强文字可读性） */
+.bottom-gradient {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 40vh;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* 移动端水波纹适配 */
+@media (max-width: 768px) {
+    #ripple-container {
+        opacity: 0.9; /* 移动端提高透明度 */
+    }
+}

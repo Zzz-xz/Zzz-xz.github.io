@@ -6,15 +6,20 @@
     <title>就真傻了</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <!-- 引入模块化CSS -->
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <canvas id="particleCanvas"></canvas>
+    <div id="ripple-container"></div>
+    <div class="bottom-gradient"></div>
+
     <div class="hero-container slide-in">
+        <!-- 添加头像 -->
+        <img src="assets/images/avatar.png" class="avatar" alt="头像">
         <h1 class="name">就真傻了</h1>
         <div class="time-display" id="timeDisplay">00:00:00</div>
         <div class="social-links">
-            <a href="javascript:void(0)" class="social-link" rel="external nofollow noopener noreferrer" target="_blank">
+            <a href="https://github.com/Zzz-xz" class="social-link" rel="external nofollow noopener noreferrer" target="_blank">
                 <i class="fab fa-github"></i>
                 <span>GitHub</span>
             </a>
@@ -25,8 +30,15 @@
         </div>
     </div>
     <div class="footer slide-in">
-        © 2025 · Personal Page
+        © 2024 · 个人主页 · 
     </div>
-    <script src="script.js"></script>
+
+    <!-- 引入水波纹依赖 -->
+    <script src="https://static.hdslb.com/js/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+    
+    <script type="module" src="js/time.js"></script>
+    <script type="module" src="js/ripple.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
