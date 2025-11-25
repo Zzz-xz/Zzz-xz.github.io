@@ -18,21 +18,25 @@
     <div class="hero-container slide-in">
         <!-- 添加头像 -->
         <img src="assets/images/avatar.png" class="avatar" alt="头像">
-        <h1 class="name">就真傻了</h1>
+        <h1 class="name">就💤了</h1>
         <div class="time-display" id="timeDisplay">00:00:00</div>
         <div class="social-links">
-            <a href="https://github.com/Zzz-xz" class="social-link" rel="external nofollow noopener noreferrer" target="_blank">
+            <!-- <a href="https://github.com/Zzz-xz" class="social-link" rel="external nofollow noopener noreferrer" target="_blank">
                 <i class="fab fa-github"></i>
                 <span>GitHub</span>
             </a>
             <a href="javascript:void(0)" class="social-link">
                 <i class="fas fa-envelope"></i>
                 <span>Email</span>
-            </a>
+            </a> -->
+            <button class="social-link" id="warmTipButton">
+                <!-- <span>温馨提示</span> -->
+                <i class="fas fa-heart ml-2"></i>
+            </button>
         </div>
     </div>
     <div class="footer slide-in">
-        © 2024 · 个人主页 · 
+        <!-- © 2024 · 个人主页 ·  -->
     </div>
 
     <!-- 引入水波纹依赖 -->
@@ -42,5 +46,14 @@
     <script type="module" src="js/time.js"></script>
     <script type="module" src="js/ripple.js"></script>
     <script type="module" src="js/main.js"></script>
+
+    <script src="js/warm_tip_popup.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', ()=>{
+            document.getElementById('warmTipButton').addEventListener('click', ()=>{
+                warmTipPopup.startPopup();
+            });
+        });
+    </script>
 </body>
 </html>
