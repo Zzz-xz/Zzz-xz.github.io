@@ -11,7 +11,7 @@ export const RIPPLE_CONFIG = {
     autoPerturbance: 0.07,  // 自动波纹扰动强度
     clickIntensity: 1.4,    // 点击波纹强度倍数
     mouseStaticDelay: 700,  // 静止后恢复自动波纹延迟（毫秒）
-    backgroundImage: '../assets/images/background.jpg' // 本地背景图路径
+    backgroundImage: 'assets/images/background.jpg' // 相对于页面入口的本地背景图路径
 };
 
 // 水波纹全局状态
@@ -19,6 +19,44 @@ let autoRippleTimer = null;
 let isMouseMoving = false;
 let mouseStaticTimer = null;
 let lastRippleTime = 0;
+let visibilityEventsBound = false;
+
+/**
+ * 获取已经初始化水波纹插件的 jQuery 元素。
+ *
+ * @param {HTMLElement} container 水波纹容器。
+ * @returns {Object|null} 插件可用时返回 jQuery 元素，否则返回 null。
+ */
+function getRippleElement(container) {
+    if (!container || typeof window.jQuery !== 'function') return null;
+
+    const rippleElement = window.jQuery(container);
+    return rippleElement.data('ripples') ? rippleElement : null;
+}
+
+/**
+ * 停止自动水波纹定时器。
+ *
+ * @returns {void}
+ */
+function stopAutoRipples() {
+    if (autoRippleTimer === null) return;
+
+    window.clearTimeout(autoRippleTimer);
+    autoRippleTimer = null;
+}
+
+/**
+ * 清除鼠标静止后的恢复定时器。
+ *
+ * @returns {void}
+ */
+function clearMouseStaticTimer() {
+    if (mouseStaticTimer === null) return;
+
+    window.clearTimeout(mouseStaticTimer);
+    mouseStaticTimer = null;
+}
 
 /**
  * 给图片URL添加时间戳（防缓存）
@@ -44,9 +82,9 @@ function getPointerPosition(e, isTouch) {
 function preloadImage(url, onSuccess, onError) {
     const img = new Image();
     img.crossOrigin = 'anonymous';
-    img.src = url;
     img.onload = onSuccess;
     img.onerror = onError;
+    img.src = url;
 }
 
 /**
@@ -56,10 +94,12 @@ export function startRipplePlugin(container) {
     const containerRect = container.getBoundingClientRect();
     if (containerRect.width === 0 || containerRect.height === 0) return;
 
+    const rippleElement = window.jQuery(container);
+
     // 销毁旧实例
-    if ($(container).data('ripples')) {
+    if (rippleElement.data('ripples')) {
         try {
-            $(container).ripples('destroy');
+            rippleElement.ripples('destroy');
         } catch (e) {
             console.error('销毁旧波纹实例失败:', e);
         }
@@ -67,7 +107,7 @@ export function startRipplePlugin(container) {
 
     // 初始化插件
     try {
-        $(container).ripples({
+        rippleElement.ripples({
             resolution: RIPPLE_CONFIG.resolution,
             dropRadius: RIPPLE_CONFIG.dropRadius,
             perturbance: RIPPLE_CONFIG.perturbance,
@@ -76,7 +116,7 @@ export function startRipplePlugin(container) {
         });
     } catch (e) {
         console.error('水波纹初始化失败:', e);
-        alert('水波纹特效加载失败，请刷新页面重试');
+        console.warn('已自动使用静态背景，页面其他功能不受影响。');
     }
 }
 
@@ -114,14 +154,17 @@ function bindInteractionEvents(container) {
  * 处理连续波纹（鼠标/触摸移动时）
  */
 function handleContinuousRipple(e, container, isTouch) {
-    isMouseMoving = true;
-    clearTimeout(mouseStaticTimer);
+    if (document.hidden) return;
 
-    // 暂停自动波纹
-    if (autoRippleTimer) {
-        clearInterval(autoRippleTimer);
-        autoRippleTimer = null;
-    }
+    isMouseMoving = true;
+    stopAutoRipples();
+    clearMouseStaticTimer();
+
+    mouseStaticTimer = window.setTimeout(() => {
+        mouseStaticTimer = null;
+        isMouseMoving = false;
+        startAutoRipples(container);
+    }, RIPPLE_CONFIG.mouseStaticDelay);
 
     // 控制波纹频率
     const now = Date.now();
@@ -129,40 +172,50 @@ function handleContinuousRipple(e, container, isTouch) {
 
     const { x, y } = getPointerPosition(e, isTouch);
     const radius = RIPPLE_CONFIG.minRadius + Math.random() * (RIPPLE_CONFIG.maxRadius - RIPPLE_CONFIG.minRadius);
-    $(container).ripples('drop', x, y, radius, RIPPLE_CONFIG.perturbance * 0.75);
+    const rippleElement = getRippleElement(container);
+    if (!rippleElement) return;
+
+    rippleElement.ripples('drop', x, y, radius, RIPPLE_CONFIG.perturbance * 0.75);
 
     lastRippleTime = now;
-
-    // 静止后恢复自动波纹
-    mouseStaticTimer = setTimeout(() => {
-        isMouseMoving = false;
-        startAutoRipples(container);
-    }, RIPPLE_CONFIG.mouseStaticDelay);
 }
 
 /**
  * 处理单次波纹（点击/触摸时）
  */
 function handleSingleRipple(e, container, isTouch) {
+    const rippleElement = getRippleElement(container);
+    if (!rippleElement) return;
+
     const { x, y } = getPointerPosition(e, isTouch);
     const radius = RIPPLE_CONFIG.dropRadius * RIPPLE_CONFIG.clickIntensity;
     const perturbance = RIPPLE_CONFIG.perturbance * RIPPLE_CONFIG.clickIntensity;
-    $(container).ripples('drop', x, y, radius, perturbance);
+    rippleElement.ripples('drop', x, y, radius, perturbance);
 }
 
 /**
- * 启动自动波纹（无交互时）
+ * 安排下一次自动水波纹。
+ *
+ * @param {HTMLElement} container 水波纹容器。
+ * @returns {void}
+ * @note 使用单次定时器，避免后台标签页恢复时积累多个波纹任务。
  */
 export function startAutoRipples(container) {
-    if (isMouseMoving || autoRippleTimer) return;
+    if (document.hidden || isMouseMoving || autoRippleTimer !== null) return;
 
-    const containerRect = container.getBoundingClientRect();
-    if (containerRect.width === 0 || containerRect.height === 0) return;
+    if (!getRippleElement(container)) return;
 
-    autoRippleTimer = setInterval(() => {
-        if (isMouseMoving) {
-            clearInterval(autoRippleTimer);
-            autoRippleTimer = null;
+    autoRippleTimer = window.setTimeout(() => {
+        autoRippleTimer = null;
+
+        if (document.hidden || isMouseMoving) return;
+
+        const rippleElement = getRippleElement(container);
+        if (!rippleElement) return;
+
+        const containerRect = container.getBoundingClientRect();
+        if (containerRect.width === 0 || containerRect.height === 0) {
+            startAutoRipples(container);
             return;
         }
 
@@ -170,8 +223,42 @@ export function startAutoRipples(container) {
         const randomY = Math.random() * containerRect.height;
         const randomRadius = RIPPLE_CONFIG.autoRippleRadius + (Math.random() - 0.5) * 2;
 
-        $(container).ripples('drop', randomX, randomY, randomRadius, RIPPLE_CONFIG.autoPerturbance);
+        rippleElement.ripples('drop', randomX, randomY, randomRadius, RIPPLE_CONFIG.autoPerturbance);
+        startAutoRipples(container);
     }, RIPPLE_CONFIG.autoRippleInterval);
+}
+
+/**
+ * 绑定页面可见性变化事件。
+ *
+ * @param {HTMLElement} container 水波纹容器。
+ * @returns {void}
+ * @note 页面隐藏时暂停模拟，恢复后等待完整间隔再生成新波纹。
+ */
+function bindVisibilityEvents(container) {
+    if (visibilityEventsBound) return;
+
+    document.addEventListener('visibilitychange', () => {
+        stopAutoRipples();
+        clearMouseStaticTimer();
+        isMouseMoving = false;
+
+        const rippleElement = getRippleElement(container);
+        if (!rippleElement) return;
+
+        try {
+            rippleElement.ripples(document.hidden ? 'pause' : 'play');
+        } catch (e) {
+            console.warn('切换水波纹运行状态失败:', e);
+        }
+
+        if (!document.hidden) {
+            lastRippleTime = Date.now();
+            startAutoRipples(container);
+        }
+    });
+
+    visibilityEventsBound = true;
 }
 
 /**
@@ -189,12 +276,20 @@ export function initRipples() {
     rippleContainer.style.backgroundImage = `url('${bgUrl}')`;
 
     // 预加载背景图
-    preloadImage(bgUrl, () => {
-        startRipplePlugin(rippleContainer);
-        bindInteractionEvents(rippleContainer);
-        startAutoRipples(rippleContainer);
-        initPageElements(); // 图片加载完成后显示页面元素
-    });
+    preloadImage(
+        bgUrl,
+        () => {
+            startRipplePlugin(rippleContainer);
+            bindInteractionEvents(rippleContainer);
+            bindVisibilityEvents(rippleContainer);
+            startAutoRipples(rippleContainer);
+            initPageElements();
+        },
+        () => {
+            console.warn('动态背景图片加载失败，已保留页面基础样式。');
+            initPageElements();
+        }
+    );
 }
 
 /**

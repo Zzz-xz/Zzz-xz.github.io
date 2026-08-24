@@ -1,4 +1,5 @@
-/* 引入基础样式和水波纹样式 */
+/** 引入本地字体、基础样式和水波纹样式。 */
+@import url('fonts.css');
 @import url('base.css');
 @import url('ripple.css');
 

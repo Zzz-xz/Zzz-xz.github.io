@@ -1,0 +1,15 @@
+/**
+ * @file fonts.css
+ * @brief 定义网站离线使用的本地字体。
+ */
+
+/**
+ * Noto Sans SC 可变字体，覆盖页面使用的 300、400、500 和 700 字重。
+ */
+@font-face {
+    font-family: 'Noto Sans SC';
+    src: url('../assets/vendor/noto-sans-sc/NotoSansSC-VariableFont_wght.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+}
