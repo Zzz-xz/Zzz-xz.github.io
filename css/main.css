@@ -27,8 +27,8 @@
     color: var(--color-ink);
     font-size: var(--text-sm);
     font-weight: 500;
-    line-height: 1;
-    letter-spacing: 0.02em;
+    line-height: 1.2;
+    letter-spacing: var(--tracking-identity);
     text-decoration: none;
     pointer-events: auto;
     transition: opacity var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out);
@@ -51,8 +51,8 @@
     color: var(--color-ink);
     font-size: var(--text-sm);
     font-weight: 500;
-    line-height: 1;
-    letter-spacing: 0.06em;
+    line-height: 1.2;
+    letter-spacing: var(--tracking-link);
     text-decoration: none;
     white-space: nowrap;
     pointer-events: auto;
@@ -118,7 +118,7 @@
     font-size: var(--text-caption);
     font-style: normal;
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.35;
     letter-spacing: var(--tracking-caption);
     white-space: nowrap;
 }
@@ -139,15 +139,18 @@
     max-width: 100%;
     color: var(--color-ink-muted);
     font-size: var(--text-xs);
-    letter-spacing: 0.04em;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: var(--tracking-footer);
 }
 
 .time-display {
     color: var(--color-ink-muted);
     font-size: var(--text-xs);
+    font-weight: 400;
     font-variant-numeric: tabular-nums;
-    line-height: 1;
-    letter-spacing: 0.1em;
+    line-height: 1.2;
+    letter-spacing: var(--tracking-time);
     pointer-events: none;
 }
 

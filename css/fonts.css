@@ -3,24 +3,36 @@
  * @brief 定义网站离线使用的本地字体。
  */
 
-/**
- * Noto Sans SC 可变字体，覆盖页面使用的 300、400、500 和 700 字重。
- */
+/** Maple Mono NL CN V7.9 Regular，覆盖页面实际使用的字符。 */
 @font-face {
-    font-family: 'Noto Sans SC';
+    font-family: 'Maple Mono NL CN';
+    src: url('../assets/vendor/maple-mono/MapleMonoNL-CN-CardSubset-Regular.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    unicode-range: U+0020-007E, U+00A0, U+2197, U+52AA, U+529B, U+5E78, U+8D8A, U+8FD0;
+}
+
+/** Maple Mono NL CN V7.9 Medium，供导航与身份文字使用。 */
+@font-face {
+    font-family: 'Maple Mono NL CN';
+    src: url('../assets/vendor/maple-mono/MapleMonoNL-CN-CardSubset-Medium.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    unicode-range: U+0020-007E, U+00A0, U+2197, U+52AA, U+529B, U+5E78, U+8D8A, U+8FD0;
+}
+
+/** 中文回退子集，并以度量覆盖减轻字体切换时的纵向位移。 */
+@font-face {
+    font-family: 'Noto Sans SC Fallback';
     src: url('../assets/vendor/noto-sans-sc/NotoSansSC-CardSubset.woff2') format('woff2');
     font-style: normal;
     font-weight: 100 900;
     font-display: swap;
-}
-
-/**
- * Noto Serif SC 可变字体，用于中文摄影题记。
- */
-@font-face {
-    font-family: 'Noto Serif SC';
-    src: url('../assets/vendor/noto-serif-sc/NotoSerifSC-CardSubset.woff2') format('woff2');
-    font-style: normal;
-    font-weight: 100 900;
-    font-display: swap;
+    size-adjust: 101.29%;
+    ascent-override: 102%;
+    descent-override: 30%;
+    line-gap-override: 0%;
+    unicode-range: U+0020-007E, U+00A0, U+2197, U+52AA, U+529B, U+5E78, U+8D8A, U+8FD0;
 }
