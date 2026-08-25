@@ -4,20 +4,20 @@
  */
 
 :root {
-    color-scheme: dark;
+    color-scheme: light;
 
-    --color-paper: oklch(18% 0.018 62);
-    --color-ink: oklch(96% 0.014 82);
-    --color-ink-caption: oklch(90% 0.014 80);
-    --color-ink-muted: oklch(82% 0.016 78);
-    --color-accent: oklch(74% 0.072 66);
-    --color-rule: oklch(96% 0.014 82 / 22%);
-    --color-focus: oklch(96% 0.022 72);
-    --color-selection: oklch(74% 0.072 66 / 34%);
-    --color-scrim-side: oklch(12% 0.018 60 / 36%);
-    --color-scrim-top: oklch(11% 0.016 60 / 76%);
-    --color-scrim-bottom: oklch(10% 0.014 58 / 80%);
-    --color-scrim-clear: oklch(12% 0.018 60 / 0%);
+    --color-paper: oklch(96% 0.012 105);
+    --color-ink: oklch(29% 0.014 100);
+    --color-ink-caption: oklch(32% 0.018 105);
+    --color-ink-muted: oklch(43% 0.018 110);
+    --color-accent: oklch(55% 0.09 150);
+    --color-rule: oklch(78% 0.012 110);
+    --color-rule-soft: oklch(84% 0.01 110);
+    --color-focus: oklch(47% 0.11 150);
+    --color-selection: oklch(76% 0.06 150 / 42%);
+    --color-veil-top: oklch(98% 0.008 105 / 74%);
+    --color-veil-bottom: oklch(98% 0.008 105 / 64%);
+    --color-veil-clear: oklch(98% 0.008 105 / 0%);
 
     --font-display: 'Noto Serif SC', 'Songti SC', serif;
     --font-body: 'Noto Sans SC', system-ui, sans-serif;
@@ -31,8 +31,8 @@
     --motto-space-end: clamp(2.5rem, 7svh, 4rem);
     --motto-space-end-wide: clamp(3rem, 8svh, 5rem);
     --focus-offset: 0.25rem;
-    --link-underline-offset: -0.25rem;
-    --tracking-caption: 0.14em;
+    --link-underline-offset: -0.125rem;
+    --tracking-caption: 0.11em;
 
     --text-xs: 0.75rem;
     --text-sm: 0.875rem;

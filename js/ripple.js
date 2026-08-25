@@ -8,10 +8,10 @@ export const RIPPLE_CONFIG = {
     maxRadius: 0.026,
     autoRippleRadius: 7,
     autoRippleInterval: 6500,
-    autoPerturbance: 0.04,
+    autoPerturbance: 0.025,
     clickIntensity: 1.25,
     mouseStaticDelay: 1200,
-    backgroundImage: 'assets/images/background.jpg'
+    backgroundImage: 'assets/images/background-water-light.svg'
 };
 
 /** 水波纹运行状态。 */
@@ -94,6 +94,7 @@ function getPointerPosition(e, isTouch) {
 function preloadImage(url, onSuccess, onError) {
     const img = new Image();
     img.crossOrigin = 'anonymous';
+    img.decoding = 'async';
     img.onload = onSuccess;
     img.onerror = onError;
     img.src = url;

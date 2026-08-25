@@ -1,4 +1,4 @@
-import { updateTime } from './time.js';
+import { startClock } from './time.js';
 import { initRipples } from './ripple.js';
 
 /**
@@ -10,17 +10,6 @@ import { initRipples } from './ripple.js';
 function isRippleAvailable() {
     return typeof window.jQuery !== 'undefined'
         && typeof window.jQuery.fn?.ripples === 'function';
-}
-
-/**
- * 初始化实时时钟。
- *
- * @returns {void}
- * @note 创建一个每秒执行的定时器，用于持续刷新页面时间。
- */
-function initClock() {
-    updateTime();
-    window.setInterval(updateTime, 1000);
 }
 
 /**
@@ -45,7 +34,7 @@ function initRippleEffect() {
  * @note 核心功能先初始化，水波纹依赖失败不会中止后续流程。
  */
 function init() {
-    initClock();
+    startClock();
     initRippleEffect();
 }
 

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <style>
+    :root {
+      --water-paper: oklch(96.5% 0.014 102);
+      --water-mist: oklch(89% 0.025 205);
+      --water-sage: oklch(90% 0.035 150);
+      --water-pearl: oklch(92% 0.025 85);
+      --water-line: oklch(67% 0.025 175);
+      --water-glint: oklch(98% 0.01 95);
+    }
+  </style>
+
+  <defs>
+    <linearGradient id="surface" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" style="stop-color: var(--water-paper)" />
+      <stop offset="1" style="stop-color: var(--water-mist)" />
+    </linearGradient>
+    <radialGradient id="sage-haze" cx="50%" cy="50%" r="50%">
+      <stop offset="0" style="stop-color: var(--water-sage); stop-opacity: 0.58" />
+      <stop offset="1" style="stop-color: var(--water-sage); stop-opacity: 0" />
+    </radialGradient>
+    <radialGradient id="pearl-light" cx="50%" cy="50%" r="50%">
+      <stop offset="0" style="stop-color: var(--water-pearl); stop-opacity: 0.82" />
+      <stop offset="1" style="stop-color: var(--water-pearl); stop-opacity: 0" />
+    </radialGradient>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="2" seed="17" />
+    </filter>
+    <filter id="soften" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" />
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#surface)" />
+  <ellipse cx="1320" cy="230" rx="700" ry="400" fill="url(#sage-haze)" />
+  <ellipse cx="270" cy="760" rx="620" ry="350" fill="url(#pearl-light)" />
+
+  <g fill="none" stroke="var(--water-line)" stroke-linecap="round">
+    <path d="M-120 150 C170 108 390 190 710 148 S1260 112 1720 174" stroke-width="1.1" opacity="0.09" />
+    <path d="M130 276 C350 242 560 306 850 268 S1240 238 1510 286" stroke-width="0.8" opacity="0.055" />
+    <path d="M-140 398 C190 350 450 432 790 388 S1320 346 1740 420" stroke-width="1.35" opacity="0.12" />
+    <path d="M-80 526 C210 492 420 550 690 520 S980 496 1190 536" stroke-width="0.75" opacity="0.065" />
+    <path d="M170 664 C430 618 650 704 960 658 S1390 626 1710 690" stroke-width="1.2" opacity="0.095" />
+    <path d="M-100 794 C220 756 510 824 850 786 S1290 750 1690 812" stroke-width="0.8" opacity="0.05" />
+  </g>
+
+  <g fill="var(--water-glint)" opacity="0.2" filter="url(#soften)">
+    <ellipse cx="1110" cy="238" rx="240" ry="13" />
+    <ellipse cx="1280" cy="522" rx="190" ry="10" />
+    <ellipse cx="530" cy="690" rx="150" ry="9" />
+  </g>
+
+  <rect width="1600" height="900" fill="var(--water-paper)" filter="url(#grain)" opacity="0.035" />
+</svg>
