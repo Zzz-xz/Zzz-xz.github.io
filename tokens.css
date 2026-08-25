@@ -1,0 +1,51 @@
+/**
+ * @file tokens.css
+ * @brief 静水名片的视觉设计令牌。
+ */
+
+:root {
+    color-scheme: dark;
+
+    --color-paper: oklch(18% 0.018 62);
+    --color-ink: oklch(96% 0.014 82);
+    --color-ink-caption: oklch(90% 0.014 80);
+    --color-ink-muted: oklch(82% 0.016 78);
+    --color-accent: oklch(74% 0.072 66);
+    --color-rule: oklch(96% 0.014 82 / 22%);
+    --color-focus: oklch(96% 0.022 72);
+    --color-selection: oklch(74% 0.072 66 / 34%);
+    --color-scrim-side: oklch(12% 0.018 60 / 36%);
+    --color-scrim-top: oklch(11% 0.016 60 / 76%);
+    --color-scrim-bottom: oklch(10% 0.014 58 / 80%);
+    --color-scrim-clear: oklch(12% 0.018 60 / 0%);
+
+    --font-display: 'Noto Serif SC', 'Songti SC', serif;
+    --font-body: 'Noto Sans SC', system-ui, sans-serif;
+
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --page-gutter: clamp(1.25rem, 4vw, 4.5rem);
+    --motto-space-end: clamp(2.5rem, 7svh, 4rem);
+    --motto-space-end-wide: clamp(3rem, 8svh, 5rem);
+    --focus-offset: 0.25rem;
+    --link-underline-offset: -0.25rem;
+    --tracking-caption: 0.14em;
+
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-caption: clamp(0.9375rem, 0.875rem + 0.25vw, 1.125rem);
+
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --dur-short: 120ms;
+
+    --rule-hairline: 1px;
+    --radius-sm: 0.375rem;
+    --radius-md: 0.625rem;
+
+    --layer-background: 0;
+    --layer-atmosphere: 1;
+    --layer-content: 2;
+}

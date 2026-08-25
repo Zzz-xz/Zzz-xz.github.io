@@ -1,35 +1,40 @@
-/* 水波纹容器样式 */
+/** 水波纹背景与暖色调遮罩。 */
 #ripple-container {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-image: url('../assets/images/background.jpg'); /* 本地背景图路径 */
-    background-position: center;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/background.jpg');
+    background-position: 58% center;
     background-size: cover;
-    background-blend-mode: overlay;
-    z-index: 0;
+    z-index: var(--layer-background);
     pointer-events: auto;
     -webkit-tap-highlight-color: transparent;
-    opacity: 0.85;
+    filter: saturate(0.72) contrast(0.92);
 }
 
-/* 底部渐变层（增强文字可读性） */
-.bottom-gradient {
+/** 轻量遮罩只承担可读性，不再制造大面积暗区。 */
+.atmosphere-overlay {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    height: 40vh;
-    background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
-    z-index: 1;
+    inset: 0;
+    background:
+        linear-gradient(180deg, var(--color-scrim-top) 0%, var(--color-scrim-clear) 32%),
+        linear-gradient(90deg, var(--color-scrim-side) 0%, var(--color-scrim-clear) 88%),
+        linear-gradient(0deg, var(--color-scrim-bottom) 0%, var(--color-scrim-clear) 62%);
+    z-index: var(--layer-atmosphere);
     pointer-events: none;
 }
 
-/* 移动端水波纹适配 */
-@media (max-width: 768px) {
+@media (min-width: 48rem) {
     #ripple-container {
-        opacity: 0.9; /* 移动端提高透明度 */
+        background-position: center;
+        filter: saturate(0.78) contrast(0.94);
+    }
+
+    .atmosphere-overlay {
+        background:
+            linear-gradient(180deg, var(--color-scrim-top) 0%, var(--color-scrim-clear) 28%),
+            linear-gradient(90deg, var(--color-scrim-side) 0%, var(--color-scrim-clear) 58%),
+            linear-gradient(0deg, var(--color-scrim-bottom) 0%, var(--color-scrim-clear) 56%);
     }
 }

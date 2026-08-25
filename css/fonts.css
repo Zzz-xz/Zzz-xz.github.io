@@ -8,7 +8,18 @@
  */
 @font-face {
     font-family: 'Noto Sans SC';
-    src: url('../assets/vendor/noto-sans-sc/NotoSansSC-VariableFont_wght.ttf') format('truetype');
+    src: url('../assets/vendor/noto-sans-sc/NotoSansSC-CardSubset.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+}
+
+/**
+ * Noto Serif SC 可变字体，用于中文摄影题记。
+ */
+@font-face {
+    font-family: 'Noto Serif SC';
+    src: url('../assets/vendor/noto-serif-sc/NotoSerifSC-CardSubset.woff2') format('woff2');
     font-style: normal;
     font-weight: 100 900;
     font-display: swap;

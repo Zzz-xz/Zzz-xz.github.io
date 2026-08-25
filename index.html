@@ -3,43 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>就真傻了</title>
-    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
-    <!-- 添加图标 -->
+    <title>Zzz-xz</title>
+    <meta name="description" content="Zzz-xz 的个人主页">
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-    <!-- 引入模块化CSS -->
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <div id="ripple-container"></div>
-    <div class="bottom-gradient"></div>
+    <div id="ripple-container" aria-hidden="true"></div>
+    <div class="atmosphere-overlay" aria-hidden="true"></div>
 
-    <div class="hero-container slide-in">
-        <!-- 添加头像 -->
-        <img src="assets/images/avatar.png" class="avatar" alt="头像">
-        <h1 class="name">就真傻了</h1>
-        <div class="time-display" id="timeDisplay">00:00:00</div>
-        <div class="social-links">
-            <a href="https://github.com/Zzz-xz" class="social-link" rel="external nofollow noopener noreferrer" target="_blank">
-                <i class="fab fa-github"></i>
+    <div class="page-shell">
+        <header class="site-nav" aria-label="主页导航">
+            <a class="identity-mark" href="#home" aria-label="返回主页">
+                <img src="assets/images/avatar.png" class="avatar" width="48" height="48" alt="">
+                <span>Zzz-xz</span>
+            </a>
+            <a class="text-link github-link" href="https://github.com/Zzz-xz" rel="external nofollow noopener noreferrer" target="_blank">
                 <span>GitHub</span>
+                <span aria-hidden="true">↗</span>
             </a>
-            <a href="mailto:imzou.ht@outlook.com" class="social-link">
-                <i class="fas fa-envelope"></i>
-                <span>Email</span>
-            </a>
-        </div>
-    </div>
-    <div class="footer slide-in">
-        个人主页
+        </header>
+
+        <main class="hero-container" id="home">
+            <h1 class="visually-hidden">Zzz-xz</h1>
+            <p class="motto">越努力越幸运</p>
+        </main>
+
+        <footer class="site-footer">
+            <a class="text-link email-link" href="mailto:imzou.ht@outlook.com" aria-label="发送邮件至 imzou.ht@outlook.com">Email</a>
+            <time class="time-display" id="timeDisplay">00:00:00</time>
+        </footer>
     </div>
 
-    <!-- 引入本地水波纹依赖 -->
     <script src="assets/vendor/jquery/jquery-3.7.1.min.js"></script>
     <script src="assets/vendor/jquery-ripples/jquery.ripples-0.5.3.min.js"></script>
-    
-    <script type="module" src="js/time.js"></script>
-    <script type="module" src="js/ripple.js"></script>
     <script type="module" src="js/main.js"></script>
 </body>
 </html>

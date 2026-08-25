@@ -1,1 +1,19 @@
-.idea
+# Local design and agent metadata
+.hallmark/
+
+# Editors
+.idea/
+.vscode/
+*.code-workspace
+
+# Operating system files
+.DS_Store
+Desktop.ini
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
+*.swp
+*.swo
+*~
