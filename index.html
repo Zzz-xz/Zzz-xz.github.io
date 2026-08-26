@@ -6,9 +6,14 @@
     <title>Zzz-xz</title>
     <meta name="description" content="Zzz-xz 的个人主页">
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="preload" as="image" href="assets/images/avatar-96.webp" type="image/webp" fetchpriority="high">
     <link rel="preload" as="font" href="assets/vendor/maple-mono/MapleMonoNL-CN-CardSubset-Regular.woff2" type="font/woff2" crossorigin>
     <link rel="preload" as="font" href="assets/vendor/maple-mono/MapleMonoNL-CN-CardSubset-Medium.woff2" type="font/woff2" crossorigin>
     <link rel="preload" as="image" href="assets/images/background-water-light.svg" type="image/svg+xml" fetchpriority="high">
+    <link rel="stylesheet" href="tokens.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/ripple.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -18,13 +23,19 @@
     <div class="page-shell">
         <header class="site-nav" aria-label="主页导航">
             <a class="identity-mark" href="#home" aria-label="返回主页">
-                <img src="assets/images/avatar.png" class="avatar" width="48" height="48" alt="">
+                <picture>
+                    <source srcset="assets/images/avatar-96.webp" type="image/webp">
+                    <img src="assets/images/avatar.png" class="avatar" width="48" height="48" alt="" loading="eager" fetchpriority="high" decoding="async">
+                </picture>
                 <span>Zzz-xz</span>
             </a>
-            <a class="text-link github-link" href="https://github.com/Zzz-xz" rel="external nofollow noopener noreferrer" target="_blank">
-                <span>GitHub</span>
-                <span aria-hidden="true">↗</span>
-            </a>
+            <nav class="nav-links" aria-label="主要链接">
+                <a class="text-link" href="collection.html">Collection</a>
+                <a class="text-link github-link" href="https://github.com/Zzz-xz" rel="external nofollow noopener noreferrer" target="_blank">
+                    <span>GitHub</span>
+                    <span aria-hidden="true">↗</span>
+                </a>
+            </nav>
         </header>
 
         <main class="hero-container" id="home">
@@ -38,8 +49,8 @@
         </footer>
     </div>
 
-    <script src="assets/vendor/jquery/jquery-3.7.1.min.js"></script>
-    <script src="assets/vendor/jquery-ripples/jquery.ripples-0.5.3.min.js"></script>
+    <script defer src="assets/vendor/jquery/jquery-3.7.1.min.js"></script>
+    <script defer src="assets/vendor/jquery-ripples/jquery.ripples-0.5.3.min.js"></script>
     <script type="module" src="js/main.js"></script>
 </body>
 </html>

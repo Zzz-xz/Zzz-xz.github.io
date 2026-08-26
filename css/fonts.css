@@ -3,24 +3,22 @@
  * @brief 定义网站离线使用的本地字体。
  */
 
-/** Maple Mono NL CN V7.9 Regular，覆盖页面实际使用的字符。 */
+/** Maple Mono NL CN V7.9 Regular 核心子集，优先覆盖站点固定文案。 */
 @font-face {
     font-family: 'Maple Mono NL CN';
     src: url('../assets/vendor/maple-mono/MapleMonoNL-CN-CardSubset-Regular.woff2') format('woff2');
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    unicode-range: U+0020-007E, U+00A0, U+2197, U+52AA, U+529B, U+5E78, U+8D8A, U+8FD0;
 }
 
-/** Maple Mono NL CN V7.9 Medium，供导航与身份文字使用。 */
+/** Maple Mono NL CN V7.9 Medium 核心子集，供导航与身份文字使用。 */
 @font-face {
     font-family: 'Maple Mono NL CN';
     src: url('../assets/vendor/maple-mono/MapleMonoNL-CN-CardSubset-Medium.woff2') format('woff2');
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    unicode-range: U+0020-007E, U+00A0, U+2197, U+52AA, U+529B, U+5E78, U+8D8A, U+8FD0;
 }
 
 /** 中文回退子集，并以度量覆盖减轻字体切换时的纵向位移。 */

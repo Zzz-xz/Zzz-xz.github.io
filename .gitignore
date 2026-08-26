@@ -17,3 +17,7 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# Python build cache
+__pycache__/
+*.py[cod]

@@ -5,11 +5,6 @@
  * contrast: pass (40–41) · slop: pass (42–45) · honest: pass (46) · chrome: pass (47) · tokens: pass (48) · responsive: pass (49) · icons: pass (30) · mobile: static-pass (34, 49, 50–57)
  * pre-emit critique: P5 H5 E5 S5 R5 V5
  */
-@import url('fonts.css');
-@import url('../tokens.css');
-@import url('base.css');
-@import url('ripple.css');
-
 /** 顶部导航采用边缘对齐，让留白成为结构的一部分。 */
 .site-nav {
     display: flex;
@@ -34,13 +29,29 @@
     transition: opacity var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out);
 }
 
+.identity-mark > span {
+    display: none;
+}
+
+.identity-mark picture {
+    flex: 0 0 auto;
+}
+
 .avatar {
     width: 2.75rem;
     height: 2.75rem;
+    background-color: var(--color-paper-soft);
     border-radius: var(--radius-md);
     object-fit: cover;
     border: var(--rule-hairline) solid var(--color-rule);
     filter: saturate(0.76);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: clamp(var(--space-md), 2.5vw, var(--space-xl));
+    pointer-events: auto;
 }
 
 .text-link {
@@ -72,11 +83,6 @@
     transition: transform var(--dur-short) var(--ease-out);
 }
 
-.identity-mark:hover {
-    opacity: 0.86;
-}
-
-.text-link:hover::after,
 .text-link:focus-visible::after {
     transform: scaleX(1);
     transform-origin: left;
@@ -154,7 +160,22 @@
     pointer-events: none;
 }
 
+@media (hover: hover) and (pointer: fine) {
+    .identity-mark:hover {
+        opacity: 0.86;
+    }
+
+    .text-link:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+}
+
 @media (min-width: 48rem) {
+    .identity-mark > span {
+        display: inline;
+    }
+
     .site-nav {
         min-height: 5.5rem;
     }

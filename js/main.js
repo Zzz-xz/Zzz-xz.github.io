@@ -1,5 +1,4 @@
 import { startClock } from './time.js';
-import { initRipples } from './ripple.js';
 
 /**
  * 判断水波纹所需的本地依赖是否可用。
@@ -15,27 +14,39 @@ function isRippleAvailable() {
 /**
  * 初始化可选的水波纹增强效果。
  *
- * @returns {void}
+ * @returns {Promise<void>}
  * @note 本地依赖不可用时保留 CSS 静态背景，不影响其他页面功能。
  */
-function initRippleEffect() {
+async function initRippleEffect() {
     if (!isRippleAvailable()) {
         console.warn('水波纹依赖不可用，已自动使用静态背景。');
         return;
     }
 
-    initRipples();
+    try {
+        const { initRipples } = await import('./ripple.js');
+        initRipples();
+    } catch (error) {
+        console.error('水波纹模块加载失败：', error);
+        console.warn('已自动使用静态背景，页面其他功能不受影响。');
+    }
 }
 
 /**
- * 初始化页面的核心功能和可选视觉效果。
+ * 立即初始化核心功能，并在页面资源就绪后启动可选视觉效果。
  *
  * @returns {void}
- * @note 核心功能先初始化，水波纹依赖失败不会中止后续流程。
+ * @note 时钟不等待图片、字体或水波纹依赖，避免慢资源阻塞时间显示。
  */
 function init() {
     startClock();
-    initRippleEffect();
+
+    if (document.readyState === 'complete') {
+        initRippleEffect();
+        return;
+    }
+
+    window.addEventListener('load', initRippleEffect, { once: true });
 }
 
-window.addEventListener('load', init);
+init();

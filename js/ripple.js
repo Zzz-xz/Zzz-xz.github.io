@@ -148,21 +148,14 @@ export function startRipplePlugin(container) {
 function bindInteractionEvents(container) {
     if (interactionEventsBound) return;
 
-    container.addEventListener('mousemove', (e) => {
+    window.addEventListener('pointermove', (e) => {
+        if (e.pointerType === 'touch') return;
         handleContinuousRipple(e, container, false);
-    });
+    }, { passive: true });
 
-    container.addEventListener('click', (e) => {
+    window.addEventListener('pointerdown', (e) => {
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
         handleSingleRipple(e, container, false);
-    });
-
-    container.addEventListener('touchmove', (e) => {
-        e.preventDefault();
-        handleContinuousRipple(e, container, true);
-    }, { passive: false });
-
-    container.addEventListener('touchstart', (e) => {
-        handleSingleRipple(e, container, true);
     }, { passive: true });
 
     interactionEventsBound = true;

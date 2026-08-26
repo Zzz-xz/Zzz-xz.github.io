@@ -7,7 +7,7 @@
 | jQuery | 3.7.1 | https://github.com/jquery/jquery | `licenses/jquery-LICENSE.txt` |
 | jquery.ripples | 0.5.3 | https://github.com/sirxemic/jquery.ripples | `licenses/jquery-ripples-LICENSE.txt` |
 | Font Awesome Free | 6.4.0 | https://github.com/FortAwesome/Font-Awesome | `licenses/fontawesome-LICENSE.txt` |
-| Maple Mono NL CN | 7.9，Regular / Medium 页面字符子集 | https://github.com/subframe7536/maple-font | `licenses/maple-mono-OFL.txt` |
+| Maple Mono NL CN | 7.9，Regular / Medium 核心子集与 Unicode 分片 | https://github.com/subframe7536/maple-font | `licenses/maple-mono-OFL.txt` |
 | Noto Sans SC | 中文回退页面字符子集 | https://github.com/google/fonts/tree/main/ofl/notosanssc | `licenses/noto-sans-sc-OFL.txt` |
 
-更新资源时，应同步更新版本号、许可证文件和 HTML/CSS 中的本地路径。字体子集仅覆盖当前页面文案，修改可见文案后应同步重新生成子集。
+更新资源时，应同步更新版本号、许可证文件和 HTML/CSS 中的本地路径。资源页会从本地 Unicode 分片自动加载新增字符；升级字体版本时，可使用 `scripts/build-maple-font-shards.py` 重新生成分片。
