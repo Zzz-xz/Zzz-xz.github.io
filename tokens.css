@@ -24,6 +24,11 @@
     --color-veil-top: oklch(98% 0.008 105 / 74%);
     --color-veil-bottom: oklch(98% 0.008 105 / 64%);
     --color-veil-clear: oklch(98% 0.008 105 / 0%);
+    --color-collection-accent: oklch(64% 0.065 88);
+    --color-collection-focus: oklch(43% 0.065 88);
+    --color-collection-rule: oklch(72% 0.018 96);
+    --color-collection-rule-soft: oklch(88% 0.012 100);
+    --color-collection-lustre: oklch(98% 0.014 96 / 58%);
 
     --font-site: 'Maple Mono NL CN', 'Maple Mono NL CN Extended', 'Noto Sans SC Fallback', 'Microsoft YaHei UI', 'PingFang SC', system-ui, sans-serif;
     --font-display: var(--font-site);
@@ -63,6 +68,8 @@
     --dur-medium: 220ms;
 
     --rule-hairline: 1px;
+    --shadow-collection-lustre: 0 1px 2px oklch(30% 0.014 96 / 5%);
+    --radius-lustre: 0.25rem;
     --radius-sm: 0.375rem;
     --radius-md: 0.625rem;
 
