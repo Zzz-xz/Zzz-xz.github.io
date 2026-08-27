@@ -55,6 +55,7 @@
     text-decoration-color: var(--color-collection-accent);
     text-decoration-thickness: var(--rule-hairline);
     text-underline-offset: 0.22em;
+    white-space: nowrap;
 }
 
 .inline-link:active {
@@ -454,8 +455,14 @@ mark {
 
 .disclaimer {
     display: grid;
-    gap: var(--space-xl);
+    gap: var(--space-2xl);
     padding-block: var(--space-2xl) var(--space-3xl);
+}
+
+.disclaimer__header {
+    display: grid;
+    max-width: 72ch;
+    gap: var(--space-sm);
 }
 
 .disclaimer h2 {
@@ -466,10 +473,36 @@ mark {
     line-height: 1.4;
 }
 
-.disclaimer__body {
+.disclaimer__lead {
+    max-width: 60ch;
+    color: var(--color-ink-muted);
+    font-size: var(--text-base);
+    line-height: 1.7;
+}
+
+.disclaimer__list {
     display: grid;
-    max-width: 72ch;
-    gap: var(--space-md);
+    max-width: 88ch;
+}
+
+.disclaimer__item {
+    display: grid;
+    min-width: 0;
+    gap: var(--space-sm);
+    padding-block: var(--space-lg);
+    border-top: var(--rule-hairline) solid var(--color-collection-rule-soft);
+}
+
+.disclaimer__item dt {
+    color: var(--color-ink);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: var(--tracking-link);
+}
+
+.disclaimer__item dd {
+    min-width: 0;
     color: var(--color-ink-caption);
     font-size: var(--text-base);
     line-height: 1.8;
@@ -538,6 +571,15 @@ mark {
 }
 
 @media (min-width: 60rem) {
+    .disclaimer__list {
+        max-width: none;
+    }
+
+    .disclaimer__item {
+        grid-template-columns: 12rem minmax(0, 72ch);
+        column-gap: var(--space-2xl);
+    }
+
     .resource-search {
         grid-template-columns: 12rem minmax(0, 1fr);
         column-gap: var(--space-2xl);
