@@ -1,0 +1,10 @@
+{
+  "$schema": "../resource.schema.json",
+  "name": "TypeWords",
+  "url": "https://typewords.cc/",
+  "description": "用打字方式学习英文单词的开源网站。",
+  "category": "learning",
+  "order": 10,
+  "sourceType": "official-site",
+  "lastChecked": "2026-08-26"
+}

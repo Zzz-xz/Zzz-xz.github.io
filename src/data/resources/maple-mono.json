@@ -1,0 +1,10 @@
+{
+  "$schema": "../resource.schema.json",
+  "name": "Maple Mono",
+  "url": "https://github.com/subframe7536/maple-font",
+  "description": "支持中英文的开源等宽字体，当前网站亦使用其无连字版本。",
+  "category": "software",
+  "order": 10,
+  "sourceType": "official-repository",
+  "lastChecked": "2026-08-26"
+}

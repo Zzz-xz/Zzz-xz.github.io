@@ -21,3 +21,9 @@ Thumbs.db
 # Python build cache
 __pycache__/
 *.py[cod]
+
+# Node and Astro build output
+node_modules/
+dist/
+.astro/
+.cache/

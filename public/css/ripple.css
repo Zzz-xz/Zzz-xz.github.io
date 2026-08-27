@@ -1,0 +1,37 @@
+/** 明亮水面背景与柔和可读性薄雾。 */
+#ripple-container {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-paper);
+    background-image: url('/assets/images/background-water-light.svg');
+    background-position: center;
+    background-size: cover;
+    z-index: var(--layer-background);
+    pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/** 薄雾只稳定顶部与页脚文字对比，不制造可见色块。 */
+.atmosphere-overlay {
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(180deg, var(--color-veil-top) 0%, var(--color-veil-clear) 30%),
+        linear-gradient(0deg, var(--color-veil-bottom) 0%, var(--color-veil-clear) 54%);
+    z-index: var(--layer-atmosphere);
+    pointer-events: none;
+}
+
+@media (min-width: 48rem) {
+    #ripple-container {
+        background-position: center;
+    }
+
+    .atmosphere-overlay {
+        background:
+            linear-gradient(180deg, var(--color-veil-top) 0%, var(--color-veil-clear) 24%),
+            linear-gradient(0deg, var(--color-veil-bottom) 0%, var(--color-veil-clear) 48%);
+    }
+}

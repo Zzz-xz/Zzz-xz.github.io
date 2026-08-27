@@ -1,0 +1,27 @@
+---
+/**
+ * @file index.astro
+ * @brief 渲染个人名片主页。
+ */
+
+import HomeFooter from '../components/HomeFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+---
+
+<SiteLayout
+    title="Zzz-xz"
+    description="Zzz-xz 的个人主页"
+    canonicalPath="/"
+>
+    <div class="page-shell">
+        <SiteHeader currentPage="home" />
+
+        <main class="hero-container" id="home">
+            <h1 class="visually-hidden">Zzz-xz</h1>
+            <p class="motto">越努力越幸运</p>
+        </main>
+
+        <HomeFooter />
+    </div>
+</SiteLayout>

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Zzz-xz Collection Resource",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "url", "description", "category", "order", "sourceType", "lastChecked"],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "category": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "sourceType": {
+      "enum": ["official-site", "official-repository", "authorized-platform"]
+    },
+    "lastChecked": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

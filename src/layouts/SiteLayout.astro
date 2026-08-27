@@ -1,0 +1,76 @@
+---
+/**
+ * @file SiteLayout.astro
+ * @brief 提供全站共享的文档结构、本地资源预加载和水波初始化入口。
+ */
+
+import RippleBackground from '../components/RippleBackground.astro';
+
+interface Props {
+    title: string;
+    description: string;
+    canonicalPath: string;
+    bodyClass?: string;
+    includeCollectionStyles?: boolean;
+}
+
+const {
+    title,
+    description,
+    canonicalPath,
+    bodyClass,
+    includeCollectionStyles = false
+} = Astro.props;
+const canonicalUrl = new URL(canonicalPath, Astro.site ?? Astro.url.origin);
+---
+
+<!doctype html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalUrl} />
+        <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon" />
+        <link rel="preload" as="image" href="/assets/images/avatar-96.webp" type="image/webp" fetchpriority="high" />
+        <link
+            rel="preload"
+            as="font"
+            href="/assets/vendor/maple-mono/MapleMonoNL-CN-CardSubset-Regular.woff2"
+            type="font/woff2"
+            crossorigin
+        />
+        <link
+            rel="preload"
+            as="font"
+            href="/assets/vendor/maple-mono/MapleMonoNL-CN-CardSubset-Medium.woff2"
+            type="font/woff2"
+            crossorigin
+        />
+        <link
+            rel="preload"
+            as="image"
+            href="/assets/images/background-water-light.svg"
+            type="image/svg+xml"
+            fetchpriority="high"
+        />
+        <link rel="stylesheet" href="/css/tokens.css" />
+        <link rel="stylesheet" href="/css/fonts.css" />
+        <link rel="stylesheet" href="/css/base.css" />
+        <link rel="stylesheet" href="/css/ripple.css" />
+        <link rel="stylesheet" href="/css/main.css" />
+        {includeCollectionStyles && <link rel="stylesheet" href="/css/maple-font-extended.css" />}
+        {includeCollectionStyles && <link rel="stylesheet" href="/css/collection.css" />}
+    </head>
+    <body class={bodyClass}>
+        <RippleBackground />
+        <slot />
+
+        <script is:inline defer src="/assets/vendor/jquery/jquery-3.7.1.min.js"></script>
+        <script is:inline defer src="/assets/vendor/jquery-ripples/jquery.ripples-0.5.3.min.js"></script>
+        <script>
+            import '../scripts/main.js';
+        </script>
+    </body>
+</html>

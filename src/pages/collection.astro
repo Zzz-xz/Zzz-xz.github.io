@@ -1,0 +1,57 @@
+---
+/**
+ * @file collection.astro
+ * @brief 构建资源收录导航和本地搜索页面。
+ */
+
+import { getCollection } from 'astro:content';
+import CollectionFooter from '../components/CollectionFooter.astro';
+import ResourceDirectory from '../components/ResourceDirectory.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import categoryFile from '../data/categories.json';
+import { buildCatalog } from '../lib/catalog';
+
+const resourceEntries = await getCollection('resources');
+const categories = buildCatalog(categoryFile.categories, resourceEntries);
+---
+
+<SiteLayout
+    title="Collection · Zzz-xz"
+    description="Zzz-xz 整理的开源软件与实用资源导航"
+    canonicalPath="/collection/"
+    bodyClass="collection-page"
+    includeCollectionStyles
+>
+    <div class="page-shell">
+        <SiteHeader currentPage="collection" />
+
+        <main class="collection-main" id="content">
+            <section class="collection-intro" aria-labelledby="collectionTitle">
+                <h1 id="collectionTitle">Collection</h1>
+                <p class="collection-intro__copy">一些值得再次打开的开源软件、项目与实用资源。</p>
+                <p class="collection-intro__notice">
+                    本站仅提供第三方网站导航，不托管、复制或分发相关内容。
+                    <a class="inline-link" href="#disclaimer">查看收录说明与免责声明</a>
+                </p>
+            </section>
+
+            <ResourceDirectory categories={categories} />
+
+            <section class="disclaimer" id="disclaimer" aria-labelledby="disclaimerTitle">
+                <h2 id="disclaimerTitle">收录说明与免责声明</h2>
+                <div class="disclaimer__body">
+                    <p>本页是个人整理的第三方网站导航，不托管、复制、存储或分发目标网站的内容，也不代表本站与相关网站存在合作、授权或背书关系。网站名称、商标及内容权利归其各自权利人所有。</p>
+                    <p>外部网站的内容、可用性、安全性、隐私政策及服务条款可能随时变化，请访问者自行判断并遵守目标网站的相关规则。本站会尽量收录官方网站、官方项目仓库或明确获得授权的平台，但不对第三方内容作持续性保证。</p>
+                    <p>如链接存在失效、误收录、侵权或其他不适宜情况，请通过 <a class="inline-link" href="mailto:imzou.ht@outlook.com?subject=Collection%20链接反馈">Email</a> 联系并附上相关链接及说明；核实后将及时更正或移除。</p>
+                </div>
+            </section>
+        </main>
+
+        <CollectionFooter />
+    </div>
+
+    <script>
+        import '../scripts/collection.js';
+    </script>
+</SiteLayout>

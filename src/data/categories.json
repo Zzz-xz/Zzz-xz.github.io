@@ -1,0 +1,25 @@
+{
+  "$schema": "./categories.schema.json",
+  "categories": [
+    {
+      "id": "learning",
+      "name": "学习",
+      "order": 10
+    },
+    {
+      "id": "software",
+      "name": "软件资源",
+      "order": 20
+    },
+    {
+      "id": "games",
+      "name": "游戏资源",
+      "order": 30
+    },
+    {
+      "id": "media",
+      "name": "影视资源",
+      "order": 40
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+---
+/**
+ * @file ResourceDirectory.astro
+ * @brief 在构建阶段输出完整资源目录，浏览器端只负责本地筛选。
+ */
+
+import type { CatalogCategory } from '../lib/catalog';
+
+interface Props {
+    categories: CatalogCategory[];
+}
+
+const { categories } = Astro.props;
+const totalCount = categories.reduce((total, category) => total + category.resources.length, 0);
+const initialStatus = totalCount > 0
+    ? `已收录 ${totalCount} 项资源，分布在 ${categories.length} 个分类。`
+    : '当前暂无收录资源。';
+---
+
+<section class="resource-directory" aria-label="资源目录" data-resource-directory data-total-count={totalCount}>
+    <form class="resource-search" id="resourceSearchForm" role="search">
+        <label for="resourceSearch">搜索收录</label>
+        <div class="resource-search__control">
+            <input
+                id="resourceSearch"
+                name="query"
+                type="search"
+                autocomplete="off"
+                spellcheck="false"
+                placeholder="名称、分类或说明"
+                aria-describedby="searchHint resultStatus"
+                disabled={totalCount === 0}
+            />
+            <button class="search-clear" id="clearSearch" type="button" hidden>清除</button>
+        </div>
+        <p class="resource-search__hint" id="searchHint">输入内容即可在本地筛选，不会发送搜索请求。</p>
+        <p class="resource-search__status" id="resultStatus" aria-live="polite">{initialStatus}</p>
+    </form>
+
+    <div class="directory-layout">
+        <nav class="category-index" aria-label="资源分类">
+            <p class="category-index__title">分类</p>
+            <ul id="categoryNav">
+                {categories.map((category) => (
+                    <li data-category-nav-item={category.id}>
+                        <a href={`#category-${category.id}`}>
+                            <span>{category.name}</span>
+                            <span class="category-index__count" data-category-nav-count>{category.resources.length}</span>
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </nav>
+
+        <div class="resource-list" id="resourceList">
+            {categories.map((category) => (
+                <section
+                    class="resource-category"
+                    id={`category-${category.id}`}
+                    data-resource-category={category.id}
+                >
+                    <header class="resource-category__header">
+                        <h2>{category.name}</h2>
+                        <span class="resource-category__count" data-category-count>{category.resources.length} 项</span>
+                    </header>
+                    {category.resources.map((resource) => (
+                        <a
+                            class="resource-entry"
+                            href={resource.url}
+                            target="_blank"
+                            rel="external nofollow noopener noreferrer"
+                            data-resource-entry
+                            data-search-text={resource.searchText}
+                        >
+                            <h3 class="resource-entry__name">
+                                <span data-search-field>{resource.name}</span>
+                                <span class="resource-entry__arrow" aria-hidden="true">↗</span>
+                                <span class="visually-hidden">（在新窗口打开）</span>
+                            </h3>
+                            <p class="resource-entry__description" data-search-field>{resource.description}</p>
+                            <p class="resource-entry__meta">
+                                <span class="resource-entry__domain" data-search-field>{resource.domain}</span>
+                                <span data-search-field>{resource.sourceLabel}</span>
+                            </p>
+                        </a>
+                    ))}
+                </section>
+            ))}
+
+            {totalCount === 0 && (
+                <section class="resource-state">
+                    <h2 class="resource-state__title">暂未收录资源</h2>
+                    <p class="resource-state__copy">目录结构已经准备好，后续资源会按分类整理在这里。</p>
+                    <a class="resource-state__action" href="mailto:imzou.ht@outlook.com?subject=Collection%20资源推荐">推荐资源</a>
+                </section>
+            )}
+
+            <section class="resource-state" id="noSearchResults" hidden>
+                <h2 class="resource-state__title">没有匹配的收录</h2>
+                <p class="resource-state__copy">换一个名称、分类或说明试试，或清除当前搜索。</p>
+                <button class="resource-state__action" id="clearEmptySearch" type="button">清除搜索</button>
+            </section>
+        </div>
+    </div>
+</section>
