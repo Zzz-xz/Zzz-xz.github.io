@@ -4,7 +4,7 @@
   "url": "https://github.com/ayangweb/BongoCat",
   "description": "可随键盘、鼠标和手柄操作同步动作的跨平台开源互动桌宠，支持自定义模型与离线运行。",
   "category": "software",
-  "order": 20,
+  "order": 10,
   "sourceType": "official-repository",
-  "lastChecked": "2026-08-26"
+  "lastChecked": "2026-08-27"
 }

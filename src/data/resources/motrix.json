@@ -4,7 +4,7 @@
   "url": "https://motrix.app/",
   "description": "支持 HTTP、FTP、BitTorrent、Magnet 等下载方式的全功能下载管理器。",
   "category": "software",
-  "order": 40,
+  "order": 20,
   "sourceType": "official-site",
   "lastChecked": "2026-08-27"
 }

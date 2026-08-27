@@ -5,6 +5,6 @@
   "description": "整理 PC、Switch 游戏条目、专题索引及相关资源的网站。",
   "category": "games",
   "order": 10,
-  "sourceType": "official-site",
-  "lastChecked": "2026-08-26"
+  "sourceType": "third-party-site",
+  "lastChecked": "2026-08-27"
 }

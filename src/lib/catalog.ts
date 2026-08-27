@@ -6,9 +6,10 @@
 import type { CollectionEntry } from 'astro:content';
 
 export const SOURCE_TYPE_LABELS = Object.freeze({
-    'official-site': '官方网站',
+    'official-site': '项目官网',
     'official-repository': '官方仓库',
-    'authorized-platform': '授权平台'
+    'authorized-platform': '授权平台',
+    'third-party-site': '第三方网站'
 });
 
 export interface CategoryDefinition {

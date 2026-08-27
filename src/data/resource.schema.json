@@ -32,7 +32,7 @@
       "minimum": 0
     },
     "sourceType": {
-      "enum": ["official-site", "official-repository", "authorized-platform"]
+      "enum": ["official-site", "official-repository", "authorized-platform", "third-party-site"]
     },
     "lastChecked": {
       "type": "string",

@@ -8,18 +8,23 @@
     },
     {
       "id": "software",
-      "name": "软件资源",
+      "name": "应用软件",
       "order": 20
+    },
+    {
+      "id": "development-design",
+      "name": "开发与设计",
+      "order": 30
     },
     {
       "id": "games",
       "name": "游戏资源",
-      "order": 30
+      "order": 40
     },
     {
       "id": "media",
       "name": "影视资源",
-      "order": 40
+      "order": 50
     }
   ]
 }

@@ -52,7 +52,12 @@ const resources = defineCollection({
         description: z.string().trim().min(1).max(200),
         category: z.string().refine((value) => CATEGORY_IDS.has(value), '必须引用已定义的分类'),
         order: z.number().int().nonnegative(),
-        sourceType: z.enum(['official-site', 'official-repository', 'authorized-platform']),
+        sourceType: z.enum([
+            'official-site',
+            'official-repository',
+            'authorized-platform',
+            'third-party-site'
+        ]),
         lastChecked: z.string().refine(isValidDate, '必须是真实的 YYYY-MM-DD 日期')
     })
 });

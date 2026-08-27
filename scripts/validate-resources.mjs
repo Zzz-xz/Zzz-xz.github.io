@@ -15,7 +15,8 @@ const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const SOURCE_TYPES = new Set([
     'official-site',
     'official-repository',
-    'authorized-platform'
+    'authorized-platform',
+    'third-party-site'
 ]);
 const CATEGORY_FIELDS = new Set(['id', 'name', 'order']);
 const RESOURCE_FIELDS = new Set([

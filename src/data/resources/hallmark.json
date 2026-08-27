@@ -1,0 +1,10 @@
+{
+  "$schema": "../resource.schema.json",
+  "name": "Hallmark",
+  "url": "https://www.usehallmark.com/",
+  "description": "面向 AI 编程助手的设计规则集，涵盖字体、色彩、布局、动效与交互。",
+  "category": "development-design",
+  "order": 20,
+  "sourceType": "official-site",
+  "lastChecked": "2026-08-27"
+}
