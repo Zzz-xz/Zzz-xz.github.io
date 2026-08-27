@@ -1,9 +1,10 @@
 /**
  * @file collection.js
- * @brief 对构建期生成的资源目录提供无网络请求的即时筛选。
+ * @brief 为构建期生成的资源目录提供本地筛选与分类导航交互。
  */
 
 import { createResultMessage, matchesSearch, normalizeSearchText } from '../lib/search.js';
+import { replaceCategoryHistory } from '../lib/category-navigation.js';
 
 const STATUS_ANNOUNCE_DELAY_MS = 250;
 
@@ -13,6 +14,7 @@ const state = {
 
 const elements = {
     directory: document.querySelector('[data-resource-directory]'),
+    categoryNav: document.getElementById('categoryNav'),
     form: document.getElementById('resourceSearchForm'),
     searchInput: document.getElementById('resourceSearch'),
     clearButton: document.getElementById('clearSearch'),
@@ -157,7 +159,60 @@ function clearSearch() {
 }
 
 /**
- * 初始化资源筛选事件。
+ * 判断用户是否要求减少非必要的滚动动画。
+ *
+ * @returns {boolean} 系统启用减少动态效果时返回 true。
+ */
+function prefersReducedMotion() {
+    return typeof window.matchMedia === 'function'
+        && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+/**
+ * 处理分类索引导航，并以替换方式更新锚点地址。
+ *
+ * @param {MouseEvent} event 分类索引的点击事件。
+ * @returns {void}
+ * @note 目标不存在或已隐藏时阻止跳转，避免产生无效历史记录。
+ */
+function handleCategoryNavigation(event) {
+    if (
+        event.defaultPrevented
+        || event.button !== 0
+        || event.metaKey
+        || event.ctrlKey
+        || event.shiftKey
+        || event.altKey
+    ) return;
+
+    if (!(event.target instanceof Element)) return;
+
+    const link = event.target.closest('a[href^="#category-"]');
+    if (!(link instanceof HTMLAnchorElement) || !elements.categoryNav.contains(link)) return;
+
+    event.preventDefault();
+
+    const targetId = link.hash.slice(1);
+    const target = document.getElementById(targetId);
+    if (!target || target.hidden) {
+        console.warn('分类导航失败：目标区域不存在或当前不可见');
+        return;
+    }
+
+    target.scrollIntoView({
+        behavior: prefersReducedMotion() ? 'auto' : 'smooth',
+        block: 'start'
+    });
+
+    try {
+        replaceCategoryHistory(window.history, window.location.href, targetId);
+    } catch (error) {
+        console.warn('分类地址更新失败，已保持当前地址：', error);
+    }
+}
+
+/**
+ * 初始化资源目录交互事件。
  *
  * @returns {void}
  * @note 页面节点缺失时仅记录错误，不影响页面其余内容。
@@ -169,6 +224,7 @@ function initCollection() {
     }
 
     elements.form.addEventListener('submit', (event) => event.preventDefault());
+    elements.categoryNav.addEventListener('click', handleCategoryNavigation);
 
     const totalCount = Number.parseInt(elements.directory.dataset.totalCount ?? '0', 10);
     if (!Number.isFinite(totalCount) || totalCount <= 0) return;
