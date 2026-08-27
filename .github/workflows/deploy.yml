@@ -1,20 +1,29 @@
+# /**
+#  * @file deploy.yml
+#  * @brief 在 master 分支更新后构建 Astro 站点并部署至 GitHub Pages。
+#  */
+
 name: Deploy to GitHub Pages
 
+# /** 推送至 master 时自动部署，并保留网页端手动重跑入口。 */
 on:
   push:
     branches: [master]
   workflow_dispatch:
 
+# /** 仅授予读取仓库、发布 Pages 及申请部署身份令牌所需的最小权限。 */
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# /** 同一时间只处理一个 Pages 发布流程，且不打断已经开始的正式部署。 */
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
+  # /** 安装锁定依赖、执行项目检查与静态构建，并上传 Pages 构建产物。 */
   build:
     runs-on: ubuntu-latest
     steps:
@@ -25,6 +34,7 @@ jobs:
         with:
           node-version: 24
 
+  # /** 仅在构建成功后，将已上传的静态产物发布到 github-pages 环境。 */
   deploy:
     needs: build
     runs-on: ubuntu-latest
