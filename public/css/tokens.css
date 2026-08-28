@@ -29,11 +29,27 @@
     --color-collection-rule: oklch(72% 0.018 96);
     --color-collection-rule-soft: oklch(88% 0.012 100);
     --color-collection-lustre: oklch(98% 0.014 96 / 58%);
+    --color-lily-pearl: oklch(98% 0.009 105);
+    --color-lily-shell: oklch(92% 0.018 108);
+    --color-lily-mist: oklch(87% 0.026 215);
+    --color-lily-sage-soft: oklch(83% 0.038 153);
+    --color-lily-sage: oklch(70% 0.052 159);
+    --color-lily-depth: oklch(46% 0.028 168);
+    --color-lily-line: oklch(60% 0.028 168);
+    --color-lily-glint: oklch(99% 0.006 102);
+    --color-lily-throat-soft: oklch(92% 0.052 96);
+    --color-lily-gold: oklch(75% 0.11 82);
+    --color-lily-gold-light: oklch(88% 0.095 90);
+    --color-lily-gold-deep: oklch(66% 0.105 76);
+    --color-lily-optic: oklch(73% 0.06 230);
+    --color-lily-waterline: oklch(67% 0.032 190);
+    --color-lily-shadow: oklch(36% 0.025 180);
 
     --font-site: 'Maple Mono NL CN', 'Maple Mono NL CN Extended', 'Noto Sans SC Fallback', 'Microsoft YaHei UI', 'PingFang SC', system-ui, sans-serif;
     --font-display: var(--font-site);
     --font-body: var(--font-site);
 
+    --space-2xs: 0.25rem;
     --space-xs: 0.5rem;
     --space-sm: 0.75rem;
     --space-md: 1rem;
@@ -42,9 +58,44 @@
     --space-2xl: 4rem;
     --space-3xl: 6rem;
     --page-gutter: clamp(1.25rem, 4vw, 4.5rem);
+    --page-gutter-start: max(var(--page-gutter), env(safe-area-inset-left));
+    --page-gutter-end: max(var(--page-gutter), env(safe-area-inset-right));
     --content-max: 82rem;
     --motto-space-end: clamp(2.5rem, 7svh, 4rem);
     --motto-space-end-wide: clamp(3rem, 8svh, 5rem);
+    --lily-size-compact: min(74vw, 27rem);
+    --lily-size-wide: clamp(28rem, 33vw, 36rem);
+    --lily-size-landscape: min(48vw, 19rem);
+    --lily-size-extreme: 15rem;
+    /**
+     * @brief 为低矮桌面连续收敛水莲尺寸，给导航与花瓣顶部保留安全距离。
+     */
+    --lily-size-desktop-low: clamp(
+        var(--lily-size-extreme),
+        calc(120svh - 12rem),
+        var(--lily-size-wide)
+    );
+    --lily-inset-block-compact: calc(var(--motto-space-end) + var(--space-xl) + var(--space-md));
+    --lily-inset-block-wide: var(--space-xl);
+    --lily-inset-block-desktop-low: clamp(
+        var(--space-sm),
+        calc(100svh - 21.25rem),
+        var(--lily-inset-block-wide)
+    );
+    --lily-anchor-block-landscape: 44.5%;
+    --lily-edge-compensation-compact: min(7.25vw, 2.5rem);
+    --lily-edge-compensation-wide: clamp(2.6rem, 3.1vw, 3.35rem);
+    --lily-edge-compensation-landscape: min(4.5vw, 1.75rem);
+    /**
+     * @brief 按短屏水莲的右侧透明边界补偿视觉落点，并平滑衔接常规桌面值。
+     */
+    --lily-edge-compensation-desktop-low: clamp(
+        1.4rem,
+        calc(10.75svh - var(--space-xs)),
+        var(--lily-edge-compensation-wide)
+    );
+    --lily-edge-compensation-extreme: 1.4rem;
+    --lily-edge-compensation-ultrawide: clamp(2.6rem, 3.1vw, 3.35rem);
     --focus-offset: 0.25rem;
     --link-underline-offset: -0.125rem;
     --tracking-identity: 0.015em;
@@ -66,6 +117,8 @@
     --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
     --dur-short: 120ms;
     --dur-medium: 220ms;
+    --dur-lily-settle: 420ms;
+    --dur-lily-bloom: 640ms;
 
     --rule-hairline: 1px;
     --shadow-collection-lustre: 0 1px 2px oklch(30% 0.014 96 / 5%);

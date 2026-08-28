@@ -1,0 +1,754 @@
+---
+/**
+ * @file PearlWaterLily.astro
+ * @brief 渲染首页右下方具有珍珠折光质感的完整水莲主视觉。
+ */
+---
+
+<div class="pearl-water-lily" data-pearl-water-lily aria-hidden="true">
+    <div class="pearl-water-lily__motion" data-lily-motion>
+        <svg
+            class="pearl-water-lily__canvas"
+            viewBox="280 70 480 410"
+            focusable="false"
+            role="presentation"
+        >
+            <defs>
+                <linearGradient id="lily-petal-pearl" x1="0.48" y1="0.02" x2="0.52" y2="0.98">
+                    <stop class="lily-stop lily-stop--pearl" offset="0" />
+                    <stop class="lily-stop lily-stop--shell" offset="1" />
+                </linearGradient>
+                <linearGradient id="lily-petal-optic" x1="0.2" y1="0.06" x2="0.8" y2="0.94">
+                    <stop class="lily-stop lily-stop--pearl" offset="0" />
+                    <stop class="lily-stop lily-stop--mist" offset="1" />
+                </linearGradient>
+                <linearGradient id="lily-pad-sage" x1="0.12" y1="0.08" x2="0.9" y2="0.92">
+                    <stop class="lily-stop lily-stop--sage-soft" offset="0" />
+                    <stop class="lily-stop lily-stop--sage" offset="1" />
+                </linearGradient>
+                <radialGradient id="lily-throat-gold" cx="0.44" cy="0.36" r="0.72">
+                    <stop class="lily-stop lily-stop--gold-light" offset="0" />
+                    <stop class="lily-stop lily-stop--gold-fade" offset="1" />
+                </radialGradient>
+                <radialGradient id="lily-anther-gold" cx="0.36" cy="0.28" r="0.78">
+                    <stop class="lily-stop lily-stop--gold-light" offset="0" />
+                    <stop class="lily-stop lily-stop--gold-deep" offset="1" />
+                </radialGradient>
+
+                <g id="lily-petal-outer-a">
+                    <path
+                        class="lily-petal lily-petal--pearl"
+                        d="M0 9C-34-3-60-64-18-128C-8-144 6-148 18-132C61-76 40-11 0 9Z"
+                    />
+                    <path class="lily-petal-vein" d="M0 4C-1-35 4-79 12-121" />
+                    <path class="lily-petal-lustre" d="M-7-7C-14-45-7-88 8-122" />
+                </g>
+                <g id="lily-petal-outer-b">
+                    <path
+                        class="lily-petal lily-petal--optic"
+                        d="M0 9C-40-8-53-73-8-135C2-149 16-140 24-125C56-66 35-7 0 9Z"
+                    />
+                    <path class="lily-petal-vein" d="M0 4C3-40 8-84 14-126" />
+                    <path class="lily-petal-lustre" d="M-8-9C-12-48-5-91 11-126" />
+                </g>
+                <g id="lily-petal-outer-c">
+                    <path
+                        class="lily-petal lily-petal--pearl"
+                        d="M0 8C-29-8-46-71-9-128C0-142 11-143 22-126C56-73 38-12 0 8Z"
+                    />
+                    <path class="lily-petal-vein" d="M0 3C1-36 7-78 15-119" />
+                    <path class="lily-petal-lustre" d="M-6-7C-10-43-3-84 11-119" />
+                </g>
+                <g id="lily-petal-outer-wide">
+                    <path
+                        class="lily-petal lily-petal--pearl"
+                        d="M0 10C-40 6-65-41-37-99C-27-121-12-136 2-140C18-137 35-115 42-91C58-37 36 4 0 10Z"
+                    />
+                    <path class="lily-petal-vein" d="M0 5C-5-31-2-72 5-121" />
+                    <path class="lily-petal-lustre" d="M-11-4C-20-38-13-79 1-119" />
+                </g>
+                <g id="lily-petal-middle-a">
+                    <path
+                        class="lily-petal lily-petal--pearl"
+                        d="M0 8C-27-4-39-52-10-100C-2-114 9-116 18-102C47-55 31-8 0 8Z"
+                    />
+                    <path class="lily-petal-vein" d="M0 3C2-28 6-61 12-94" />
+                    <path class="lily-petal-lustre" d="M-6-5C-10-35-4-67 9-94" />
+                </g>
+                <g id="lily-petal-middle-b">
+                    <path
+                        class="lily-petal lily-petal--optic"
+                        d="M0 8C-31-7-36-58-5-105C4-118 14-110 21-96C45-49 28-5 0 8Z"
+                    />
+                    <path class="lily-petal-vein" d="M0 3C3-30 8-64 13-97" />
+                    <path class="lily-petal-lustre" d="M-6-6C-9-36-2-70 10-98" />
+                </g>
+                <g id="lily-petal-inner-a">
+                    <path
+                        class="lily-petal lily-petal--pearl"
+                        d="M0 7C-20-4-27-42-6-76C1-88 10-87 17-75C36-39 23-3 0 7Z"
+                    />
+                    <path class="lily-petal-vein lily-petal-vein--inner" d="M0 2C2-22 5-45 10-69" />
+                    <path class="lily-petal-lustre lily-petal-lustre--inner" d="M-4-3C-7-25-2-49 7-69" />
+                </g>
+                <g id="lily-petal-inner-b">
+                    <path
+                        class="lily-petal lily-petal--optic"
+                        d="M0 7C-22-6-25-45-2-79C5-89 13-81 18-70C34-35 20-2 0 7Z"
+                    />
+                    <path class="lily-petal-vein lily-petal-vein--inner" d="M0 2C3-22 7-46 11-70" />
+                    <path class="lily-petal-lustre lily-petal-lustre--inner" d="M-4-3C-6-25 0-50 8-70" />
+                </g>
+                <g id="lily-stamen-long">
+                    <path class="lily-filament" d="M0 3C-1-6 0-15 1-22" />
+                    <ellipse class="lily-anther" cx="1" cy="-24" rx="2.35" ry="3.2" />
+                    <circle class="lily-anther-light" cx="0.3" cy="-25" r="0.7" />
+                </g>
+                <g id="lily-stamen-long-b">
+                    <path class="lily-filament" d="M0 3C2-6 2-15-1-22" />
+                    <ellipse class="lily-anther" cx="-1" cy="-24" rx="2.2" ry="3.05" />
+                    <circle class="lily-anther-light" cx="-1.6" cy="-25" r="0.65" />
+                </g>
+                <g id="lily-stamen-short">
+                    <path class="lily-filament" d="M0 2C0-4 1-10 2-15" />
+                    <ellipse class="lily-anther" cx="2" cy="-17" rx="1.9" ry="2.55" />
+                    <circle class="lily-anther-light" cx="1.4" cy="-17.8" r="0.58" />
+                </g>
+                <g id="lily-stamen-short-b">
+                    <path class="lily-filament" d="M0 2C1-4 0-10-2-15" />
+                    <ellipse class="lily-anther" cx="-2" cy="-17" rx="1.8" ry="2.45" />
+                    <circle class="lily-anther-light" cx="-2.5" cy="-17.8" r="0.54" />
+                </g>
+            </defs>
+
+            <g class="lily-layer lily-layer--pads" data-lily-layer data-lily-depth="-0.06">
+                <ellipse
+                    class="lily-contact-shadow"
+                    cx="550"
+                    cy="344"
+                    rx="94"
+                    ry="30"
+                    transform="rotate(-5 550 344)"
+                />
+                <g
+                    class="lily-pad-cluster lily-pad-cluster--rear"
+                    transform="translate(635 330) rotate(11) scale(0.52 0.62) translate(-578 -348)"
+                >
+                    <path
+                        class="lily-pad lily-pad--right"
+                        d="M578 348L457 311C480 273 535 252 603 259C676 267 725 307 720 351C714 399 652 432 585 433C518 434 467 402 454 358L578 348Z"
+                    />
+                    <g class="lily-pad-veins">
+                        <path d="M578 348C620 315 658 295 691 292" />
+                        <path d="M578 348C637 347 682 354 714 369" />
+                        <path d="M578 348C625 383 648 408 653 421" />
+                        <path d="M578 348C550 383 534 407 531 420" />
+                    </g>
+                    <g class="lily-dew">
+                        <ellipse cx="620" cy="320" rx="9" ry="5.5" />
+                        <ellipse cx="646" cy="335" rx="5.5" ry="3.3" />
+                        <path d="M615 318C618 316 622 315 625 316" />
+                    </g>
+                </g>
+                <g
+                    class="lily-pad-cluster lily-pad-cluster--front"
+                    transform="translate(490 365) rotate(-7) scale(0.82 0.88) translate(-220 -345)"
+                >
+                    <path
+                        class="lily-pad"
+                        d="M220 345L364 306C329 262 262 246 190 258C112 270 60 315 69 363C78 414 148 444 220 437C292 430 347 386 354 333L220 345Z"
+                    />
+                    <g class="lily-pad-veins">
+                        <path d="M220 345C169 318 126 301 91 299" />
+                        <path d="M220 345C158 350 108 360 72 377" />
+                        <path d="M220 345C171 382 146 407 138 425" />
+                        <path d="M220 345C239 386 251 413 254 430" />
+                    </g>
+                </g>
+                <g class="lily-water-surface">
+                    <path class="lily-waterline" d="M408 448C441 458 483 459 516 448" />
+                    <path class="lily-waterline lily-waterline--right" d="M615 386C636 391 661 391 682 384" />
+                </g>
+            </g>
+
+            <g class="lily-layer lily-layer--flower" data-lily-layer data-lily-depth="0.2">
+                <g
+                    class="lily-flower-composition"
+                    transform="translate(552 254) scale(0.9) translate(-414 -278)"
+                >
+                    <g transform="translate(414 278) scale(1.06 0.78)">
+                        <g class="lily-fold lily-fold--outer lily-petals lily-petals--rear">
+                            <use href="#lily-petal-outer-wide" transform="rotate(-94) translate(0 -2) scale(0.98 0.96)" />
+                            <use href="#lily-petal-outer-a" transform="rotate(-68) translate(0 -3) scale(-1.01 0.97)" />
+                            <use href="#lily-petal-outer-b" transform="rotate(-42) translate(0 -1) scale(0.97 1.04)" />
+                            <use href="#lily-petal-outer-b" transform="rotate(-16) translate(0 -3) scale(-1.04 0.99)" />
+                            <use href="#lily-petal-outer-b" transform="rotate(11) translate(0 -2) scale(0.98 1.02)" />
+                            <use href="#lily-petal-outer-a" transform="rotate(39) translate(0 -1) scale(1.03 0.98)" />
+                            <use href="#lily-petal-outer-c" transform="rotate(65) translate(0 -3) scale(-0.97 1.01)" />
+                            <use href="#lily-petal-outer-wide" transform="rotate(91) translate(0 -1) scale(-1.01 0.94)" />
+                        </g>
+                    </g>
+
+                    <g transform="translate(414 278) scale(1.08 0.82)">
+                        <g class="lily-fold lily-fold--outer lily-petals lily-petals--front">
+                            <use href="#lily-petal-outer-wide" transform="rotate(117) translate(0 -2) scale(1.04 0.92)" />
+                            <use href="#lily-petal-outer-c" transform="rotate(146) translate(0 -1) scale(-0.96 1.01)" />
+                            <use href="#lily-petal-outer-a" transform="rotate(174) translate(0 -3) scale(1.02 0.98)" />
+                            <use href="#lily-petal-outer-wide" transform="rotate(204) translate(0 -2) scale(-1.03 0.95)" />
+                            <use href="#lily-petal-outer-c" transform="rotate(233) translate(0 -4) scale(0.96 1.02)" />
+                            <use href="#lily-petal-outer-a" transform="rotate(261) translate(0 -1) scale(-1.01 0.97)" />
+                        </g>
+                    </g>
+
+                    <g transform="translate(414 278) scale(0.98 0.88)">
+                        <g class="lily-fold lily-fold--middle lily-petals lily-petals--middle">
+                            <use href="#lily-petal-middle-a" transform="rotate(-84) translate(0 -2) scale(1.03 0.98)" />
+                            <use href="#lily-petal-middle-b" transform="rotate(-49) translate(0 -1) scale(-0.98 1.04)" />
+                            <use href="#lily-petal-middle-b" transform="rotate(-15) translate(0 -3) scale(1.04 0.98)" />
+                            <use href="#lily-petal-middle-b" transform="rotate(20) translate(0 -1) scale(-0.96 1.04)" />
+                            <use href="#lily-petal-middle-b" transform="rotate(54) translate(0 -2) scale(1.02 0.97)" />
+                            <use href="#lily-petal-middle-a" transform="rotate(89) translate(0 -1) scale(-1.01 1.03)" />
+                            <use href="#lily-petal-middle-a" transform="rotate(124) translate(0 -3) scale(0.95 1.01)" />
+                            <use href="#lily-petal-middle-a" transform="rotate(160) translate(0 -1) scale(-1.04 0.97)" />
+                            <use href="#lily-petal-middle-a" transform="rotate(199) translate(0 -2) scale(0.98 1.03)" />
+                            <use href="#lily-petal-middle-a" transform="rotate(239) translate(0 -3) scale(-1.02 0.99)" />
+                        </g>
+                    </g>
+
+                    <g transform="translate(414 277) scale(0.86 0.96)">
+                        <g class="lily-fold lily-fold--inner lily-petals lily-petals--inner">
+                            <use href="#lily-petal-inner-a" transform="rotate(-72) translate(0 -2) scale(1.04 0.99)" />
+                            <use href="#lily-petal-inner-b" transform="rotate(-29) translate(0 -1) scale(-0.97 1.04)" />
+                            <use href="#lily-petal-inner-b" transform="rotate(15) translate(0 -3) scale(1.03 0.98)" />
+                            <use href="#lily-petal-inner-b" transform="rotate(59) translate(0 -1) scale(-0.96 1.03)" />
+                            <use href="#lily-petal-inner-a" transform="rotate(104) translate(0 -2) scale(1.02 1.02)" />
+                            <use href="#lily-petal-inner-a" transform="rotate(150) translate(0 -1) scale(-1.04 0.97)" />
+                            <use href="#lily-petal-inner-a" transform="rotate(197) translate(0 -3) scale(0.98 1.02)" />
+                            <use href="#lily-petal-inner-a" transform="rotate(245) translate(0 -1) scale(-1.01 0.99)" />
+                        </g>
+                    </g>
+
+                    <g class="lily-flower-core">
+                        <g class="lily-flower-core__geometry" transform="translate(-3 -2)">
+                            <g class="lily-throat">
+                                <path
+                                    class="lily-throat__halo"
+                                    d="M387 281C389 269 398 262 410 261C424 260 438 267 441 278C439 289 428 297 414 297C400 297 389 291 387 281Z"
+                                />
+                                <path
+                                    class="lily-throat__heart"
+                                    d="M396 281C397 273 405 268 414 267C424 268 432 273 433 281C431 289 424 293 414 293C404 293 398 289 396 281Z"
+                                />
+                            </g>
+                            <g transform="translate(414 280) scale(1 0.78)" class="lily-stamens lily-stamens--outer">
+                                <use href="#lily-stamen-long" transform="rotate(-91) translate(0 -2) scale(0.88 1.08)" />
+                                <use href="#lily-stamen-long-b" transform="rotate(-64) translate(0 -1) scale(1.06 0.91)" />
+                                <use href="#lily-stamen-long" transform="rotate(-36) translate(0 -3) scale(0.94 1.1)" />
+                                <use href="#lily-stamen-long-b" transform="rotate(-8) translate(0 -1) scale(1.09 0.93)" />
+                                <use href="#lily-stamen-long" transform="rotate(21) translate(0 -2) scale(0.91 1.04)" />
+                                <use href="#lily-stamen-long-b" transform="rotate(50) translate(0 -1) scale(1.03 0.9)" />
+                                <use href="#lily-stamen-long" transform="rotate(79) translate(0 -3) scale(0.96 1.07)" />
+                                <use href="#lily-stamen-long-b" transform="rotate(111) translate(0 -1) scale(1.05 0.94)" />
+                                <use href="#lily-stamen-long" transform="rotate(145) translate(0 -2) scale(0.9 1.03)" />
+                                <use href="#lily-stamen-long-b" transform="rotate(177) translate(0 -1) scale(1.08 0.92)" />
+                                <use href="#lily-stamen-long" transform="rotate(211) translate(0 -3) scale(0.93 1.09)" />
+                                <use href="#lily-stamen-long-b" transform="rotate(247) translate(0 -1) scale(1.04 0.95)" />
+                            </g>
+                            <g transform="translate(414 280) scale(1 0.82)" class="lily-stamens lily-stamens--inner">
+                                <use href="#lily-stamen-short" transform="rotate(-74) translate(0 -1) scale(0.91 1.08)" />
+                                <use href="#lily-stamen-short-b" transform="rotate(-35) translate(0 -2) scale(1.08 0.92)" />
+                                <use href="#lily-stamen-short" transform="rotate(4) translate(0 -1) scale(0.95 1.05)" />
+                                <use href="#lily-stamen-short-b" transform="rotate(43) translate(0 -2) scale(1.04 0.94)" />
+                                <use href="#lily-stamen-short" transform="rotate(86) translate(0 -1) scale(0.92 1.07)" />
+                                <use href="#lily-stamen-short-b" transform="rotate(128) translate(0 -2) scale(1.07 0.91)" />
+                                <use href="#lily-stamen-short" transform="rotate(169) translate(0 -1) scale(0.96 1.04)" />
+                                <use href="#lily-stamen-short-b" transform="rotate(213) translate(0 -2) scale(1.03 0.95)" />
+                                <use href="#lily-stamen-short" transform="rotate(259) translate(0 -1) scale(0.93 1.06)" />
+                            </g>
+                            <g class="lily-seed-cluster">
+                                <circle cx="407.5" cy="277.5" r="2.1" />
+                                <circle class="lily-seed--light" cx="414.5" cy="275.5" r="2.3" />
+                                <circle cx="421" cy="278.5" r="1.8" />
+                                <circle class="lily-seed--light" cx="410.5" cy="283.5" r="1.9" />
+                                <circle cx="417.5" cy="283" r="2" />
+                                <circle class="lily-seed--light" cx="423" cy="284.5" r="1.6" />
+                                <circle cx="414.5" cy="288" r="1.7" />
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+
+            <g class="lily-layer lily-layer--optics" data-lily-layer data-lily-depth="0.42">
+                <g transform="translate(552 254) scale(0.9) translate(-414 -278)">
+                    <g class="lily-optics">
+                        <path class="lily-glint" d="M396 190C402 207 406 226 409 241" />
+                        <path class="lily-glint lily-glint--short" d="M330 242C345 235 357 236 369 242" />
+                        <path class="lily-glint lily-glint--short" d="M474 232C493 228 508 232 520 242" />
+                        <path class="lily-optic-rim" d="M320 265C337 251 353 248 370 252" />
+                        <path class="lily-optic-rim" d="M474 251C494 243 512 246 528 258" />
+                    </g>
+                </g>
+            </g>
+        </svg>
+    </div>
+</div>
+
+<script>
+    import { initPearlWaterLily } from '../scripts/pearl-water-lily.js';
+
+    initPearlWaterLily();
+</script>
+
+<style>
+    /**
+     * @brief 采用主叶承托、辅叶退后和花心上提的非对称簇状构图。
+     * @note 收紧后的取景框只改变视觉层次，不参与页面内容排版。
+     */
+    .pearl-water-lily {
+        --lily-glint-opacity: 0.28;
+        --lily-rim-opacity: 0.15;
+        position: absolute;
+        inset-block-start: auto;
+        inset-block-end: var(--lily-inset-block-compact);
+        inset-inline-start: auto;
+        inset-inline-end: max(
+            var(--space-2xs),
+            calc(var(--page-gutter-end) - var(--lily-edge-compensation-compact))
+        );
+        z-index: var(--layer-atmosphere);
+        inline-size: var(--lily-size-compact);
+        aspect-ratio: 48 / 41;
+        opacity: 0.86;
+        pointer-events: none;
+        user-select: none;
+        transform: none;
+        transition: opacity var(--dur-lily-settle) var(--ease-out);
+        contain: layout style;
+    }
+
+    .pearl-water-lily.is-near {
+        opacity: 0.95;
+    }
+
+    .pearl-water-lily__motion,
+    .pearl-water-lily__canvas {
+        display: block;
+        inline-size: 100%;
+        block-size: 100%;
+    }
+
+    .pearl-water-lily__motion {
+        transform-box: fill-box;
+        transform-origin: 56.1% 45%;
+    }
+
+    .pearl-water-lily__canvas {
+        overflow: visible;
+    }
+
+    .lily-layer {
+        --layer-x: 0px;
+        --layer-y: 0px;
+        --layer-rotate: 0deg;
+        transform: translate3d(var(--layer-x), var(--layer-y), 0) rotate(var(--layer-rotate));
+        transform-box: fill-box;
+        transform-origin: center;
+        transition: transform var(--dur-lily-settle) var(--ease-out);
+    }
+
+    .lily-stop--pearl {
+        stop-color: var(--color-lily-pearl);
+    }
+
+    .lily-stop--shell {
+        stop-color: var(--color-lily-shell);
+    }
+
+    .lily-stop--mist {
+        stop-color: var(--color-lily-mist);
+    }
+
+    .lily-stop--sage-soft {
+        stop-color: var(--color-lily-sage-soft);
+    }
+
+    .lily-stop--sage {
+        stop-color: var(--color-lily-sage);
+    }
+
+    .lily-stop--gold-light {
+        stop-color: var(--color-lily-gold-light);
+    }
+
+    .lily-stop--gold-fade {
+        stop-color: var(--color-lily-gold);
+        stop-opacity: 0.16;
+    }
+
+    .lily-stop--gold-deep {
+        stop-color: var(--color-lily-gold-deep);
+    }
+
+    .lily-contact-shadow {
+        fill: var(--color-lily-shadow);
+        fill-opacity: 0.1;
+    }
+
+    .lily-pad {
+        fill: url('#lily-pad-sage');
+        fill-opacity: 0.58;
+        stroke: var(--color-lily-line);
+        stroke-width: 0.92;
+        stroke-opacity: 0.72;
+        stroke-linejoin: round;
+        vector-effect: non-scaling-stroke;
+    }
+
+    .lily-pad--right {
+        fill-opacity: 0.38;
+        stroke-opacity: 0.44;
+    }
+
+    .lily-pad-veins path {
+        fill: none;
+        stroke: var(--color-lily-depth);
+        stroke-linecap: round;
+        vector-effect: non-scaling-stroke;
+    }
+
+    .lily-pad-veins path {
+        stroke-width: 0.78;
+        opacity: 0.18;
+    }
+
+    /**
+     * @brief 将水纹置于独立坐标系并缩短弧长，避免非等比缩放形成荷叶残余轮廓。
+     */
+    .lily-waterline {
+        fill: none;
+        stroke: var(--color-lily-waterline);
+        stroke-width: 0.58;
+        stroke-linecap: round;
+        opacity: 0.16;
+        vector-effect: non-scaling-stroke;
+    }
+
+    .lily-waterline--right {
+        opacity: 0.12;
+    }
+
+    .lily-dew ellipse {
+        fill: var(--color-lily-glint);
+        fill-opacity: 0.56;
+        stroke: var(--color-lily-line);
+        stroke-width: 0.75;
+        vector-effect: non-scaling-stroke;
+    }
+
+    .lily-dew path {
+        fill: none;
+        stroke: var(--color-lily-glint);
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        opacity: 0.86;
+        vector-effect: non-scaling-stroke;
+    }
+
+    .lily-fold {
+        transform-box: fill-box;
+        transform-origin: 50% 58%;
+    }
+
+    /**
+     * @brief 统一花喉、雄蕊与花粉簇的回弹坐标系，使花心始终贴合内层花瓣。
+     * @note 点击形变保留在外层，静态几何校准放入子分组，避免 transform 相互覆盖。
+     */
+    .lily-flower-core {
+        transform-box: fill-box;
+        transform-origin: 50% 50%;
+    }
+
+    .lily-petal {
+        stroke: var(--color-lily-line);
+        stroke-width: 0.56;
+        stroke-opacity: 0.67;
+        stroke-linejoin: round;
+        vector-effect: non-scaling-stroke;
+    }
+
+    .lily-petal--pearl {
+        fill: url('#lily-petal-pearl');
+        fill-opacity: 0.97;
+    }
+
+    .lily-petal--optic {
+        fill: url('#lily-petal-optic');
+        fill-opacity: 0.95;
+    }
+
+    .lily-petal-vein {
+        fill: none;
+        stroke: var(--color-lily-depth);
+        stroke-width: 0.5;
+        stroke-linecap: round;
+        opacity: 0.09;
+        vector-effect: non-scaling-stroke;
+    }
+
+    .lily-petal-vein--inner {
+        opacity: 0.075;
+    }
+
+    .lily-petal-lustre {
+        fill: none;
+        stroke: var(--color-lily-glint);
+        stroke-width: 0.68;
+        stroke-linecap: round;
+        opacity: 0.2;
+        vector-effect: non-scaling-stroke;
+    }
+
+    .lily-petal-lustre--inner {
+        opacity: 0.16;
+    }
+
+    .lily-petals--rear {
+        opacity: 0.71;
+    }
+
+    .lily-petals--front {
+        opacity: 0.92;
+    }
+
+    .lily-petals--middle {
+        opacity: 0.98;
+    }
+
+    .lily-throat__halo {
+        fill: var(--color-lily-throat-soft);
+        opacity: 0.5;
+    }
+
+    .lily-throat__heart {
+        fill: url('#lily-throat-gold');
+        opacity: 0.54;
+    }
+
+    .lily-filament {
+        fill: none;
+        stroke: var(--color-lily-gold);
+        stroke-width: 0.9;
+        stroke-linecap: round;
+        opacity: 0.7;
+        vector-effect: non-scaling-stroke;
+    }
+
+    .lily-anther {
+        fill: url('#lily-anther-gold');
+        opacity: 0.9;
+    }
+
+    .lily-anther-light {
+        fill: var(--color-lily-gold-light);
+        opacity: 0.9;
+    }
+
+    .lily-seed-cluster circle {
+        fill: var(--color-lily-gold-deep);
+        stroke: var(--color-lily-gold-light);
+        stroke-width: 0.32;
+        vector-effect: non-scaling-stroke;
+    }
+
+    .lily-seed-cluster .lily-seed--light {
+        fill: var(--color-lily-gold-light);
+        opacity: 0.92;
+    }
+
+    .lily-glint,
+    .lily-optic-rim {
+        fill: none;
+        stroke-linecap: round;
+        vector-effect: non-scaling-stroke;
+        transition: opacity var(--dur-medium) var(--ease-out);
+    }
+
+    .lily-glint {
+        stroke: var(--color-lily-glint);
+        stroke-width: 3;
+        opacity: var(--lily-glint-opacity);
+    }
+
+    .lily-glint--short {
+        stroke-width: 2.4;
+    }
+
+    .lily-optic-rim {
+        stroke: var(--color-lily-optic);
+        stroke-width: 1;
+        opacity: var(--lily-rim-opacity);
+    }
+
+    .pearl-water-lily__motion.is-blooming {
+        animation: lily-touch-settle var(--dur-lily-bloom) var(--ease-out);
+    }
+
+    .pearl-water-lily__motion.is-blooming .lily-fold--outer {
+        animation: lily-fold-outer var(--dur-lily-bloom) var(--ease-out);
+    }
+
+    .pearl-water-lily__motion.is-blooming .lily-fold--middle,
+    .pearl-water-lily__motion.is-blooming .lily-fold--inner,
+    .pearl-water-lily__motion.is-blooming .lily-flower-core {
+        animation: lily-fold-core var(--dur-lily-bloom) var(--ease-out);
+    }
+
+    .pearl-water-lily__motion.is-blooming .lily-optics {
+        animation: lily-optic-answer var(--dur-lily-bloom) var(--ease-out);
+    }
+
+    @keyframes lily-touch-settle {
+        38% {
+            transform: translateY(1px) scale(0.994);
+        }
+        100% {
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    @keyframes lily-fold-outer {
+        38% {
+            transform: translateY(1px) scale(0.994);
+        }
+        100% {
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    @keyframes lily-fold-core {
+        38% {
+            transform: translateY(1.5px) scale(0.986);
+        }
+        72% {
+            transform: translateY(-0.5px) scale(1.003);
+        }
+        100% {
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    @keyframes lily-optic-answer {
+        42% {
+            opacity: 0.74;
+            transform: translateY(-1px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (min-width: 48rem) {
+        .pearl-water-lily {
+            inset-block-end: var(--lily-inset-block-wide);
+            inset-inline-end: max(
+                var(--space-2xs),
+                calc(var(--page-gutter-end) - var(--lily-edge-compensation-wide))
+            );
+            inline-size: var(--lily-size-wide);
+            opacity: 0.9;
+        }
+
+        .pearl-water-lily.is-near {
+            opacity: 0.96;
+        }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        .pearl-water-lily.is-near .lily-layer {
+            will-change: transform;
+        }
+    }
+
+    @media (min-width: 82rem) {
+        .pearl-water-lily {
+            inset-inline-end: max(
+                var(--space-2xs),
+                calc(var(--page-gutter-end) - var(--lily-edge-compensation-ultrawide))
+            );
+        }
+    }
+
+    @media (max-width: 47.999rem) and (max-height: 35rem) and (orientation: landscape) {
+        .pearl-water-lily {
+            inset-block-start: var(--lily-anchor-block-landscape);
+            inset-block-end: auto;
+            inset-inline-end: max(
+                var(--space-2xs),
+                calc(var(--page-gutter-end) - var(--lily-edge-compensation-landscape))
+            );
+            inline-size: var(--lily-size-landscape);
+            transform: translateY(-50%);
+        }
+    }
+
+    @media (max-width: 47.999rem) and (max-height: 22rem) and (orientation: landscape) {
+        .pearl-water-lily {
+            inset-block-start: auto;
+            inset-block-end: var(--space-xs);
+            inset-inline-end: max(
+                var(--space-2xs),
+                calc(var(--page-gutter-end) - var(--lily-edge-compensation-extreme))
+            );
+            inline-size: var(--lily-size-extreme);
+            transform: none;
+        }
+    }
+
+    @media (min-width: 48rem) and (max-height: 40rem) {
+        .pearl-water-lily {
+            inset-block-end: var(--lily-inset-block-desktop-low);
+            inset-inline-end: max(
+                var(--space-2xs),
+                calc(var(--page-gutter-end) - var(--lily-edge-compensation-desktop-low))
+            );
+            inline-size: var(--lily-size-desktop-low);
+        }
+    }
+
+    @media (min-width: 48rem) and (max-height: 22rem) {
+        .pearl-water-lily {
+            inset-block-end: var(--space-xs);
+            inset-inline-end: max(
+                var(--space-2xs),
+                calc(var(--page-gutter-end) - var(--lily-edge-compensation-extreme))
+            );
+            inline-size: var(--lily-size-extreme);
+        }
+    }
+
+    @media (pointer: coarse) {
+        .pearl-water-lily {
+            opacity: 0.86;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .pearl-water-lily,
+        .lily-layer,
+        .lily-glint,
+        .lily-optic-rim {
+            transition: none;
+        }
+
+        .pearl-water-lily__motion,
+        .lily-layer,
+        .lily-fold,
+        .lily-flower-core,
+        .lily-optics {
+            animation: none !important;
+            transform: none !important;
+        }
+    }
+</style>

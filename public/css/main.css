@@ -1,9 +1,9 @@
 /**
  * Hallmark · macrostructure: Ambient Canvas (bespoke) · genre: editorial · tone: bright-soft-luxury · anchor hue: pearl-sage
- * theme: Atelier · palette: light pearl-sage · hero: full-bleed ambient canvas, lower-left motto
- * enrichment: E7 abstract water surface · craft: tier-B local SVG · nav: N9 · footer: Ft2 · motion: ripple-only
+ * theme: Atelier · palette: light pearl-sage · hero: full-bleed ambient canvas, lower-left motto + lower-right optical anchor
+ * enrichment: E5 edge-anchored botanical water lily + E7 abstract water surface · craft: tier-B inline SVG · nav: N9 · footer: Ft2 · motion: focal micro-tilt + optical highlight + touch settle
  * contrast: pass (40–41) · slop: pass (42–45) · honest: pass (46) · chrome: pass (47) · tokens: pass (48) · responsive: pass (49) · icons: pass (30) · mobile: static-pass (34, 49, 50–57)
- * pre-emit critique: P5 H5 E5 S5 R5 V5
+ * pre-emit critique: P5 H5 E5 S5 R5 V4
  */
 /** 顶部导航采用边缘对齐，让留白成为结构的一部分。 */
 .site-nav {
@@ -11,7 +11,8 @@
     justify-content: space-between;
     align-items: center;
     min-height: 4.75rem;
-    padding: var(--space-md) var(--page-gutter);
+    padding-block: var(--space-md);
+    padding-inline: var(--page-gutter-start) var(--page-gutter-end);
     border-bottom: var(--rule-hairline) solid var(--color-rule-soft);
 }
 
@@ -107,15 +108,21 @@
     pointer-events: none;
 }
 
-/** 短语以水面题记呈现，让留白与轻微水波继续承担主视觉。 */
+/** 水莲以右下边缘为视觉锚点，原有短语仍以左下水面题记呈现。 */
 .hero-container {
     display: grid;
     align-items: end;
+    position: relative;
+    isolation: isolate;
     min-width: 0;
-    padding: var(--space-lg) var(--page-gutter) var(--motto-space-end);
+    padding-block: var(--space-lg) var(--motto-space-end);
+    padding-inline: var(--page-gutter-start) var(--page-gutter-end);
+    overflow: clip;
 }
 
 .motto {
+    position: relative;
+    z-index: var(--layer-content);
     width: fit-content;
     max-width: 100%;
     margin: 0;
@@ -136,7 +143,8 @@
     align-items: center;
     gap: var(--space-lg);
     min-height: 4rem;
-    padding: var(--space-sm) var(--page-gutter);
+    padding-block: var(--space-sm);
+    padding-inline: var(--page-gutter-start) var(--page-gutter-end);
     border-top: var(--rule-hairline) solid var(--color-rule-soft);
 }
 
