@@ -10,7 +10,8 @@ const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)';
 const FINE_POINTER_QUERY = '(hover: hover) and (pointer: fine)';
 const LILY_FOCUS_X_RATIO = 0.561;
 const LILY_FOCUS_Y_RATIO = 0.449;
-const POINTER_TRAVEL_PX = 12;
+/** 缩小视差幅度，避免装饰尺寸下的图层位移显得漂浮。 */
+const POINTER_TRAVEL_PX = 6;
 const POINTER_ROTATION_DEG = 0.9;
 const BLOOM_DURATION_MS = 640;
 const TAP_MOVE_TOLERANCE_PX = 8;

@@ -717,6 +717,19 @@
         }
     }
 
+    /**
+     * @brief 与短屏题记的字号断点同步收敛水莲，保持文字与装饰的稳定比例。
+     */
+    @media (min-width: 48rem) and (max-height: 35rem) {
+        .pearl-water-lily {
+            inset-inline-end: max(
+                var(--space-2xs),
+                calc(var(--page-gutter-end) - var(--lily-edge-compensation-landscape))
+            );
+            inline-size: var(--lily-size-landscape);
+        }
+    }
+
     @media (min-width: 48rem) and (max-height: 22rem) {
         .pearl-water-lily {
             inset-block-end: var(--space-xs);

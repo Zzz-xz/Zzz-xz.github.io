@@ -63,39 +63,40 @@
     --content-max: 82rem;
     --motto-space-end: clamp(2.5rem, 7svh, 4rem);
     --motto-space-end-wide: clamp(3rem, 8svh, 5rem);
-    --lily-size-compact: min(74vw, 27rem);
-    --lily-size-wide: clamp(28rem, 33vw, 36rem);
-    --lily-size-landscape: min(48vw, 19rem);
-    --lily-size-extreme: 15rem;
     /**
-     * @brief 为低矮桌面连续收敛水莲尺寸，给导航与花瓣顶部保留安全距离。
+     * @brief 让水莲可见主体略窄于左侧短语，使其退居为右下方的环境装饰。
      */
-    --lily-size-desktop-low: clamp(
-        var(--lily-size-extreme),
-        calc(120svh - 12rem),
-        var(--lily-size-wide)
-    );
-    --lily-inset-block-compact: calc(var(--motto-space-end) + var(--space-xl) + var(--space-md));
+    --lily-size-compact: clamp(9.5rem, calc(8.9rem + 2.4vw), 10.125rem);
+    --lily-size-wide: clamp(10rem, calc(8.9rem + 2.4vw), 11.25rem);
+    --lily-size-landscape: 8.3125rem;
+    --lily-size-extreme: 8.3125rem;
+    /**
+     * @brief 低矮桌面沿用常规装饰比例；更短视口由组件与题记字号同步切换。
+     */
+    --lily-size-desktop-low: var(--lily-size-wide);
+    /**
+     * @brief 窄屏与宽屏共用底部锚点，避免跨越宽度断点时水莲向上跳动。
+     */
     --lily-inset-block-wide: var(--space-xl);
+    --lily-inset-block-compact: var(--lily-inset-block-wide);
     --lily-inset-block-desktop-low: clamp(
         var(--space-sm),
         calc(100svh - 21.25rem),
         var(--lily-inset-block-wide)
     );
     --lily-anchor-block-landscape: 44.5%;
-    --lily-edge-compensation-compact: min(7.25vw, 2.5rem);
-    --lily-edge-compensation-wide: clamp(2.6rem, 3.1vw, 3.35rem);
-    --lily-edge-compensation-landscape: min(4.5vw, 1.75rem);
+    /**
+     * @brief 按缩小后的 SVG 透明边界校准右侧留白，使可见轮廓与页面网格对齐。
+     */
+    --lily-edge-compensation-compact: 1rem;
+    --lily-edge-compensation-wide: clamp(1rem, calc(0.9rem + 0.25vw), 1.25rem);
+    --lily-edge-compensation-landscape: 0.875rem;
     /**
      * @brief 按短屏水莲的右侧透明边界补偿视觉落点，并平滑衔接常规桌面值。
      */
-    --lily-edge-compensation-desktop-low: clamp(
-        1.4rem,
-        calc(10.75svh - var(--space-xs)),
-        var(--lily-edge-compensation-wide)
-    );
-    --lily-edge-compensation-extreme: 1.4rem;
-    --lily-edge-compensation-ultrawide: clamp(2.6rem, 3.1vw, 3.35rem);
+    --lily-edge-compensation-desktop-low: var(--lily-edge-compensation-wide);
+    --lily-edge-compensation-extreme: 0.875rem;
+    --lily-edge-compensation-ultrawide: clamp(1rem, calc(0.9rem + 0.25vw), 1.25rem);
     --focus-offset: 0.25rem;
     --link-underline-offset: -0.125rem;
     --tracking-identity: 0.015em;
