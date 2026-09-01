@@ -601,8 +601,11 @@ mark {
         border-bottom: 0;
     }
 
+    /**
+     * @brief 使用内容无关的弹性列宽，避免长域名改变不同资源行的说明列起点。
+     */
     .resource-entry {
-        grid-template-columns: minmax(10rem, 0.8fr) minmax(0, 1.7fr) minmax(9rem, auto);
+        grid-template-columns: minmax(10rem, 1fr) minmax(0, 1.7fr) minmax(14rem, 1.1fr);
         align-items: start;
         gap: var(--space-xl);
     }

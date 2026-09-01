@@ -1,0 +1,10 @@
+{
+  "$schema": "../resource.schema.json",
+  "name": "HelloGitHub",
+  "url": "https://hellogithub.com/",
+  "description": "分享 GitHub 上有趣、入门级的开源项目，帮助读者发现开源的乐趣。",
+  "category": "learning",
+  "order": 20,
+  "sourceType": "official-site",
+  "lastChecked": "2026-09-01"
+}

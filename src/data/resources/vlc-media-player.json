@@ -1,0 +1,10 @@
+{
+  "$schema": "../resource.schema.json",
+  "name": "VLC media player",
+  "url": "https://www.videolan.org/",
+  "description": "免费开源的跨平台多媒体播放器，可播放多数音视频文件、光盘、设备及网络流。",
+  "category": "software",
+  "order": 50,
+  "sourceType": "official-site",
+  "lastChecked": "2026-09-01"
+}

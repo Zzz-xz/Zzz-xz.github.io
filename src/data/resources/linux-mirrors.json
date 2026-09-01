@@ -1,0 +1,10 @@
+{
+  "$schema": "../resource.schema.json",
+  "name": "LinuxMirrors",
+  "url": "https://linuxmirrors.cn/",
+  "description": "面向 GNU/Linux 的开源换源工具，提供系统软件源切换以及 Docker 安装与镜像源配置脚本。",
+  "category": "development-design",
+  "order": 30,
+  "sourceType": "official-site",
+  "lastChecked": "2026-09-01"
+}

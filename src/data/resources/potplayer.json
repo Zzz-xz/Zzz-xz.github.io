@@ -1,0 +1,10 @@
+{
+  "$schema": "../resource.schema.json",
+  "name": "PotPlayer",
+  "url": "https://potplayer.tv/",
+  "description": "支持硬件加速、多种字幕格式、3D 输出及丰富播放控制的 Windows 多媒体播放器。",
+  "category": "software",
+  "order": 40,
+  "sourceType": "official-site",
+  "lastChecked": "2026-09-01"
+}

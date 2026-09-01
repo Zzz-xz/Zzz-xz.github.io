@@ -1,0 +1,10 @@
+{
+  "$schema": "../resource.schema.json",
+  "name": "沉浸式翻译",
+  "url": "https://www.immersivetranslate.net/",
+  "description": "支持网页、PDF、文档与视频字幕双语对照的 AI 翻译工具，提供浏览器扩展和移动端应用。",
+  "category": "software",
+  "order": 30,
+  "sourceType": "official-site",
+  "lastChecked": "2026-09-01"
+}
