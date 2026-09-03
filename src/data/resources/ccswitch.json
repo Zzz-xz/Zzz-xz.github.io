@@ -1,0 +1,10 @@
+{
+  "$schema": "../resource.schema.json",
+  "name": "CCSwitch",
+  "url": "https://ccswitch.io/",
+  "description": "用于统一管理 Claude Code、Codex、Gemini CLI 等 AI 编程命令行工具的开源应用。",
+  "category": "development-design",
+  "order": 40,
+  "sourceType": "official-site",
+  "lastChecked": "2026-09-03"
+}

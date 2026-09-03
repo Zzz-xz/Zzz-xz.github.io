@@ -1,0 +1,10 @@
+{
+  "$schema": "../resource.schema.json",
+  "name": "Clash Verge Rev",
+  "url": "https://www.clashverge.dev/",
+  "description": "基于 Tauri 的跨平台 Mihomo 图形客户端，支持配置管理、系统代理、TUN 模式与 WebDAV 备份同步。",
+  "category": "software",
+  "order": 60,
+  "sourceType": "official-site",
+  "lastChecked": "2026-09-03"
+}

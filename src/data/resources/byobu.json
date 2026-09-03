@@ -1,0 +1,10 @@
+{
+  "$schema": "../resource.schema.json",
+  "name": "Byobu",
+  "url": "https://byobu.org/",
+  "description": "基于 tmux 或 GNU Screen 的开源终端复用与文本窗口管理工具，提供快捷键、状态栏、分屏和会话保持。",
+  "category": "development-design",
+  "order": 50,
+  "sourceType": "official-site",
+  "lastChecked": "2026-09-03"
+}
