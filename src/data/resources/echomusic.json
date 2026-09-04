@@ -1,0 +1,10 @@
+{
+  "$schema": "../resource.schema.json",
+  "name": "EchoMusic",
+  "url": "https://echomusic.cc.cd/",
+  "description": "面向酷狗的开源桌面音乐客户端，提供队列与播放模式管理、多维搜索、滚动歌词及跨系统托盘与全局快捷键支持。",
+  "category": "software",
+  "order": 70,
+  "sourceType": "official-site",
+  "lastChecked": "2026-09-04"
+}
